@@ -9,7 +9,8 @@ This is the the hands-on lab guide for Calico Security, Observability, and Troub
 
 The following diagram depicts the lab setup used for the entire training.
 
-![image](img/1.Lab-Topology.JPG)
+<img src="/img/1.Lab-Topology.JPG">
+
 
 
 
