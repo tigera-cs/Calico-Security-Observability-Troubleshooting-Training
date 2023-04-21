@@ -2,7 +2,7 @@
 This is the the hands-on lab guide for Calico Security, Observability, and Troubleshooting Training.
 
 <p align="center">
-<img src="/img/Calico-Tigera-Icon.png">
+<img src="/img/Calico-Cat-Tigera-Shirt.png">
 </p>
   
 ## Lab setup
