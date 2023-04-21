@@ -2,14 +2,14 @@
 This is the the hands-on lab guide for Calico Security, Observability, and Troubleshooting Training.
 
 <p align="center">
-<img src="/img/Calico-Cat-Tigera-Shirt.png" width="300" height="300">
+<img src="/img/1.Calico-Cat-Tigera-Shirt.png" width="300" height="300">
 </p>
   
 ## Lab setup
 
 The following diagram depicts the lab setup used for the entire training.
 
-<img src="/img/1.Lab-Topology.JPG">
+<img src="/img/2.Lab-Topology.JPG">
 
 
 
