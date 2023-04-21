@@ -1,8 +1,10 @@
 # Calico-Security-Observability-Troubleshooting-Training
 This is the the hands-on lab guide for Calico Security, Observability, and Troubleshooting Training.
 
+<p align="center">
 <img src="/img/Calico-Tigera-Icon.png">
-
+</p>
+  
 ## Lab setup
 
 The following diagram depicts the lab setup used for the entire training.
