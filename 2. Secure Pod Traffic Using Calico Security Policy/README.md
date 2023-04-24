@@ -28,4 +28,4 @@ This lab use three application that run across 5 namespaces and belong to two te
   - Yaobank app
     -  yaobank namespace
   - Bookinfo
-    - bookinfo   
+    - bookinfo namespace   
