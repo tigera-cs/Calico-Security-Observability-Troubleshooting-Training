@@ -30,9 +30,7 @@ This lab uses two applications that run across 4 namespaces and belong to two te
 
 
 
-<p align="center">
-<Cluster Topology>
-</p>
+<h1 align="center">Cluster Topology</h1>
 
 
 <p align="center">
