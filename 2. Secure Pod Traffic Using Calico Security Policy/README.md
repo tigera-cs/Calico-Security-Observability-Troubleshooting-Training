@@ -28,6 +28,13 @@ This lab uses two applications that run across 4 namespaces and belong to two te
   - Yaobank app
     -  yaobank namespace
 
+
+
+<p align="center">
+<Cluster Topology>
+</p>
+
+
 <p align="center">
 <img src="/img/3.tenants.png">
 </p>
