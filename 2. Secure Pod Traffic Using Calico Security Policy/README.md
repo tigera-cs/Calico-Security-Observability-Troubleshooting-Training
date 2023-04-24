@@ -28,5 +28,6 @@ This lab uses two applications that run across 4 namespaces and belong to two te
   - Yaobank app
     -  yaobank namespace
 
-
-<img src="/img/3.tenants.png">
+<p align="center">
+<img src="/img/3.tenants.png" width="300" height="300">
+</p>
