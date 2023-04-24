@@ -16,7 +16,7 @@ Kubernetes' network model is both flexible and dynamic, enabling applications to
 
 ### Deploy Sample Microservices
 
-This lab use two application that run across 4 namespaces and belong to two tenants, Tenant-1 and Tenant-2. Star app is composed of three namespaces (management-ui, client, stars) and belong to Tenant-1. Yaobank runs in a single and belong to Tenant-2. The ingress-nginx namespace hosts an ingress controller, which will be used to connect to the applications through the respective frontend microservice for each application. The ingress-nginx and kube-system namespaces are owned by the platform and are managed independent of the tenant namespaces.
+This lab uses two applications that run across 4 namespaces and belong to two tenants, Tenant-1 and Tenant-2. Star app pods run in three namespaces (management-ui, client, stars) and belong to Tenant-1. Yaobank pods runs in a single and belong to Tenant-2. The ingress-nginx namespace hosts an ingress controller, which will be used to connect to the applications through the respective frontend microservice for each application. The ingress-nginx and kube-system namespaces are owned by the platform and are managed independent of the tenant namespaces.
 
 - Tenant-1
   - Star app
