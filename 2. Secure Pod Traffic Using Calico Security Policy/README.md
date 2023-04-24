@@ -29,4 +29,4 @@ This lab uses two applications that run across 4 namespaces and belong to two te
     -  yaobank namespace
 
 
-<img src="/img/2.Lab-Topology.png">
+<img src="/img/3.tenants.png">
