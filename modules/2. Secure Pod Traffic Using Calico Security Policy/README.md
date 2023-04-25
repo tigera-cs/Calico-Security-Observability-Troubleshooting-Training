@@ -217,5 +217,25 @@ NAME                             READY   STATUS    RESTARTS        AGE
 management-ui-6c47d46679-xs4h5   1/1     Running   1 (5h56m ago)   27h          -------> to be replaced
 ```
 
+```bash
+kubectl get pods -n client
+
+```
+```bash
+NAME                      READY   STATUS    RESTARTS     AGE
+client-66b456486c-dcxg7   1/1     Running   1 (6h ago)   27h          -------> to be replaced
+```
+
+```bash
+kubectl get pods -n stars
+
+```
+```bash
+NAME                       READY   STATUS    RESTARTS       AGE
+backend-799bfd69f7-sll9x   1/1     Running   1 (6h1m ago)   27h
+frontend-db76f566f-sgm8v   1/1     Running   1 (6h1m ago)   27h         -------> to be replaced
+```
+
+
 You should an output similar to the following.
 
