@@ -52,7 +52,6 @@ metadata:
   name: yaobank
   labels:
     istio-injection: disabled
-
 ---
 apiVersion: v1
 kind: Service
@@ -67,7 +66,6 @@ spec:
     name: http
   selector:
     app: database
-
 ---
 apiVersion: v1
 kind: ServiceAccount
@@ -76,7 +74,6 @@ metadata:
   namespace: yaobank
   labels:
     app: yaobank
-
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -108,7 +105,6 @@ spec:
           - "http://database:2379"
           - "-listen-client-urls"
           - "http://0.0.0.0:2379"
-
 ---
 apiVersion: v1
 kind: Service
@@ -122,8 +118,7 @@ spec:
   - port: 80
     name: http
   selector:
-    app: summary
-    
+    app: summary  
 ---
 apiVersion: v1
 kind: ServiceAccount
@@ -133,7 +128,6 @@ metadata:
   labels:
     app: yaobank
     database: reader
-    
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -159,7 +153,6 @@ spec:
         imagePullPolicy: Always
         ports:
         - containerPort: 80
- 
 ---
 apiVersion: v1
 kind: Service
@@ -175,8 +168,7 @@ spec:
     nodePort: 30180
     name: http
   selector:
-    app: customer
-    
+    app: customer 
 ---
 apiVersion: v1
 kind: ServiceAccount
@@ -185,8 +177,7 @@ metadata:
   namespace: yaobank
   labels:
     app: yaobank
-    summary: reader
-    
+    summary: reader 
 ---
 apiVersion: apps/v1
 kind: Deployment
