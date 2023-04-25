@@ -472,3 +472,36 @@ summary-755668b699-9nvzj    1/1     Running   0          5m51s
 summary-755668b699-q6z9c    1/1     Running   0          5m51s
 ```
 
+### Deploy Ingress Resources
+
+The ingress controller is already deployed for you in `ingress-nginx` namespace. However, you still need to configure Ingress resources for your applications. In this section, we will deploy Ingress resoureces for `Stars` and `Yaobank` apps.
+
+#### Stars Ingress Resource
+
+
+
+#### Yaobank Ingress Resource
+
+```yaml
+kubectl apply -f -<<EOF
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-customer
+  namespace: yaobank
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: www.yaobank.com
+      http:
+        paths:
+          - pathType: Prefix
+            backend:
+              service:
+                name: customer
+                port:
+                  number: 80
+            path: /
+EOF
+
+```
