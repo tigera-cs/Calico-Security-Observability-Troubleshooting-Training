@@ -46,6 +46,255 @@ To deploy the Star app, deploy the following manifest in the cluster.
 
 ```yaml
 kubectl apply -f -<<EOF
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: stars
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: management-ui
+  labels:
+    role: management-ui
+---
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: client
+  labels:
+    role: client
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend
+  namespace: stars
+spec:
+  ports:
+    - port: 6379
+      targetPort: 6379
+  selector:
+    role: backend
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+  namespace: stars
+  labels:
+    role: backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      role: backend
+  template:
+    metadata:
+      labels:
+        role: backend
+    spec:
+      containers:
+        - name: backend
+          image: calico/star-probe:multiarch
+          imagePullPolicy: Always
+          command:
+            - probe
+            - --http-port=6379
+            - --urls=http://frontend.stars:80/status,http://backend.stars:6379/status,http://client.client:9000/status
+          ports:
+            - containerPort: 6379
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend
+  namespace: stars
+spec:
+  ports:
+    - port: 6379
+      targetPort: 6379
+  selector:
+    role: backend
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+  namespace: stars
+  labels:
+    role: backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      role: backend
+  template:
+    metadata:
+      labels:
+        role: backend
+    spec:
+      containers:
+        - name: backend
+          image: calico/star-probe:multiarch
+          imagePullPolicy: Always
+          command:
+            - probe
+            - --http-port=6379
+            - --urls=http://frontend.stars:80/status,http://backend.stars:6379/status,http://client.client:9000/status
+          ports:
+            - containerPort: 6379
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend
+  namespace: stars
+spec:
+  ports:
+    - port: 80
+      targetPort: 80
+  selector:
+    role: frontend
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+  namespace: stars
+  labels:
+    role: frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      role: frontend
+  template:
+    metadata:
+      labels:
+        role: frontend
+    spec:
+      containers:
+        - name: frontend
+          image: calico/star-probe:multiarch
+          imagePullPolicy: Always
+          command:
+            - probe
+            - --http-port=80
+            - --urls=http://frontend.stars:80/status,http://backend.stars:6379/status,http://client.client:9000/status
+          ports:
+            - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: management-ui
+  namespace: management-ui
+spec:
+  ports:
+    - port: 9001
+      targetPort: 9001
+  selector:
+    role: management-ui
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: management-ui
+  namespace: management-ui
+  labels:
+    role: management-ui
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      role: management-ui
+  template:
+    metadata:
+      labels:
+        role: management-ui
+    spec:
+      containers:
+        - name: management-ui
+          image: calico/star-collect:multiarch
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 9001
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: client
+  namespace: client
+  labels:
+    role: client
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      role: client
+  template:
+    metadata:
+      labels:
+        role: client
+    spec:
+      containers:
+        - name: client
+          image: calico/star-probe:multiarch
+          imagePullPolicy: Always
+          command:
+            - probe
+            - --urls=http://frontend.stars:80/status,http://backend.stars:6379/status
+          ports:
+            - containerPort: 9000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: client
+  namespace: client
+spec:
+  ports:
+    - port: 9000
+      targetPort: 9000
+  selector:
+    role: client
+EOF
+
+```
+
+
+```bash
+kubectl get pods -n management-ui
+
+```
+```bash
+NAME                             READY   STATUS    RESTARTS        AGE
+management-ui-6c47d46679-xs4h5   1/1     Running   1 (5h56m ago)   27h          -------> to be replaced
+```
+
+```bash
+kubectl get pods -n client
+
+```
+```bash
+NAME                      READY   STATUS    RESTARTS     AGE
+client-66b456486c-dcxg7   1/1     Running   1 (6h ago)   27h          -------> to be replaced
+```
+
+```bash
+kubectl get pods -n stars
+
+```
+```bash
+NAME                       READY   STATUS    RESTARTS       AGE
+backend-799bfd69f7-sll9x   1/1     Running   1 (6h1m ago)   27h
+frontend-db76f566f-sgm8v   1/1     Running   1 (6h1m ago)   27h         -------> to be replaced
+```
+
+
+```yaml
+kubectl apply -f -<<EOF
 apiVersion: v1
 kind: Namespace
 metadata:
@@ -207,35 +456,6 @@ spec:
 EOF
 
 ```
-
-```bash
-kubectl get pods -n management-ui
-
-```
-```bash
-NAME                             READY   STATUS    RESTARTS        AGE
-management-ui-6c47d46679-xs4h5   1/1     Running   1 (5h56m ago)   27h          -------> to be replaced
-```
-
-```bash
-kubectl get pods -n client
-
-```
-```bash
-NAME                      READY   STATUS    RESTARTS     AGE
-client-66b456486c-dcxg7   1/1     Running   1 (6h ago)   27h          -------> to be replaced
-```
-
-```bash
-kubectl get pods -n stars
-
-```
-```bash
-NAME                       READY   STATUS    RESTARTS       AGE
-backend-799bfd69f7-sll9x   1/1     Running   1 (6h1m ago)   27h
-frontend-db76f566f-sgm8v   1/1     Running   1 (6h1m ago)   27h         -------> to be replaced
-```
-
 
 You should an output similar to the following.
 
