@@ -478,6 +478,41 @@ The ingress controller is already deployed for you in `ingress-nginx` namespace.
 
 #### Stars Ingress Resource
 
+```yaml
+kubectl apply -f -<<EOF
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: management-ui
+  namespace: management-ui
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: www.stars.com             ------------------------> update the domain name
+      http:
+        paths:
+          - pathType: Prefix
+            backend:
+              service:
+                name: management-ui
+                port:
+                  number: 9001
+            path: /
+EOF
+
+```
+
+You should see an output similar to the following.
+
+```bash
+kubectl get ingresses -n management-ui
+
+```
+
+```bash
+NAME            CLASS   HOSTS                   ADDRESS       PORTS   AGE
+management-ui   nginx   www.management-ui.com   172.16.10.0   80      28h            --------------------------> update the oputput
+```
 
 
 #### Yaobank Ingress Resource
@@ -492,7 +527,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-    - host: www.yaobank.com
+    - host: www.yaobank.com             ------------------------> update the domain name
       http:
         paths:
           - pathType: Prefix
@@ -515,5 +550,5 @@ kubectl get ingresses -n management-ui
 
 ```bash
 NAME            CLASS   HOSTS                   ADDRESS       PORTS   AGE
-management-ui   nginx   www.management-ui.com   172.16.10.0   80      28h
+management-ui   nginx   www.management-ui.com   172.16.10.0   80      28h            --------------------------> update the oputput
 ```
