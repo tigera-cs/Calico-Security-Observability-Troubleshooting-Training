@@ -505,3 +505,15 @@ spec:
 EOF
 
 ```
+
+You should see an output similar to the following.
+
+```bash
+kubectl get ingresses -n management-ui
+
+```
+
+```bash
+NAME            CLASS   HOSTS                   ADDRESS       PORTS   AGE
+management-ui   nginx   www.management-ui.com   172.16.10.0   80      28h
+```
