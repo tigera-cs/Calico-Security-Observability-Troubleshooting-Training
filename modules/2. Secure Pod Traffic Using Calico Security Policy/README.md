@@ -208,5 +208,14 @@ EOF
 
 ```
 
+```bash
+kubectl get pods -n management-ui
+
+```
+```bash
+NAME                             READY   STATUS    RESTARTS        AGE
+management-ui-6c47d46679-xs4h5   1/1     Running   1 (5h56m ago)   27h          -------> to be replaced
+```
+
 You should an output similar to the following.
 
