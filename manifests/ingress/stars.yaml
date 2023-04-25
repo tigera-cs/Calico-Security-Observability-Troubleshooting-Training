@@ -1,0 +1,18 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: management-ui
+  namespace: management-ui
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: www.management-ui.com
+      http:
+        paths:
+          - pathType: Prefix
+            backend:
+              service:
+                name: management-ui
+                port:
+                  number: 9001
+            path: /
