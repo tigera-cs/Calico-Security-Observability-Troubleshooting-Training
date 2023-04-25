@@ -263,6 +263,7 @@ EOF
 
 ```
 
+You should see an output similar to the following for each one of the Star app namesapces.
 
 ```bash
 kubectl get pods -n management-ui
@@ -457,5 +458,18 @@ EOF
 
 ```
 
-You should an output similar to the following.
+You should an output similar to the following for yaobank application.
+
+```bash
+kubectl get pods -n yaobank
+
+```
+
+```bash
+NAME                        READY   STATUS    RESTARTS   AGE
+customer-85658df659-nnlx2   1/1     Running   0          5m50s
+database-674c4bf5f4-df2jf   1/1     Running   0          5m51s
+summary-755668b699-9nvzj    1/1     Running   0          5m51s
+summary-755668b699-q6z9c    1/1     Running   0          5m51s
+```
 
