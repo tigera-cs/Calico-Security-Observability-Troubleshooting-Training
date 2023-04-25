@@ -4,7 +4,7 @@ This lab provides the instructions to:
 
 * [Overview](https://github.com/tigera-cs/Calico-Security-Observability-Troubleshooting-Training/blob/main/modules/2.%20Secure%20Pod%20Traffic%20Using%20Calico%20Security%20Policy/README.md#overview)
 * [Cluster applications and connectivity](https://github.com/tigera-cs/Calico-Security-Observability-Troubleshooting-Training/blob/main/modules/2.%20Secure%20Pod%20Traffic%20Using%20Calico%20Security%20Policy/README.md#cluster-applications-and-connectivity)
-* [Deploy Sample Microservices]()
+* [Deploy Sample Microservices](https://github.com/tigera-cs/Calico-Security-Observability-Troubleshooting-Training/blob/main/modules/2.%20Secure%20Pod%20Traffic%20Using%20Calico%20Security%20Policy/README.md#deploy-sample-microservices)
 * [Install Calico Enterprise command line utility "calicoctl"](https://github.com/tigera-cs/Calico-Security-Observability-Troubleshooting-Training/blob/main/1.%20Install%20Calico%20Enterprise/README.md#install-calico-enterprise-command-line-utility-calicoctl)
 * [Deploy a three-tier sample application called "yaobank" (Yet Another Online Bank)](https://github.com/tigera-cs/Calico-Enterprise-Networking-Training/blob/main/1.%20Install%20Calico%20Enterprise/README.md#deploy-a-three-tier-sample-application-called-yaobank-yet-another-online-bank)
 * [Access CE Manager UI using Ingress](https://github.com/tigera-cs/Calico-Enterprise-Networking-Training/blob/main/1.%20Install%20Calico%20Enterprise/README.md#access-ce-manager-ui-using-ingress)
