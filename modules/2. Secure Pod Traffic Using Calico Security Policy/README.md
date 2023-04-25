@@ -488,7 +488,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-    - host: www.stars.com             ------------------------> update the domain name
+    - host: www.stars.com             ------------------------> update the domain name  --- also update the manifest in the manifest directory.
       http:
         paths:
           - pathType: Prefix
@@ -527,7 +527,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-    - host: www.yaobank.com             ------------------------> update the domain name
+    - host: www.yaobank.com             ------------------------> update the domain name  --- also update the manifest in the manifest directory.
       http:
         paths:
           - pathType: Prefix
