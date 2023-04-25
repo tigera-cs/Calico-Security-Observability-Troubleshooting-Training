@@ -39,3 +39,11 @@ This lab uses two applications that run across 4 namespaces and belong to two te
 
 
 ### Deploy Sample Microservices
+
+#### Deploy `Star` App
+
+To deploy the Star app, deploy the following manifest in the cluster.
+
+```yaml
+
+```
