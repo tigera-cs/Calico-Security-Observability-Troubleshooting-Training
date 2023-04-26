@@ -589,8 +589,8 @@ The `tenant-1-restrict` and `tenant-2-restrict` security policies will have ingr
 
 > `tenant-2-restrict` security policy
 
-![tenant-2-restrict](images/tenant-2-restrict.png)
-![tenant-2-pass](images/tenant-2-pass.png)
+![tenant-2-restrict](img/quickstart-self-service-tenant-2-restrict.png)
+![tenant-2-pass](img/quickstart-self-service-tenant-2-restrict-pass.png)
 
 
 ## `security-default-pass` Security Policy
@@ -599,7 +599,7 @@ The `security-default-pass` security policy will have the lowest precedence in t
 
 > security-default-pass security policy
 
-![security-default-pass](images/security-default-pass.png)
+![security-default-pass](img/quickstart-self-service-tenant-2-restrict.png)
 
 
 
