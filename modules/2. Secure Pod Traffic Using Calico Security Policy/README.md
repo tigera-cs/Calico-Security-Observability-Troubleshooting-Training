@@ -599,7 +599,7 @@ The `security-default-pass` security policy will have the lowest precedence in t
 
 > security-default-pass security policy
 
-![security-default-pass](img/quickstart-self-service-tenant-2-restrict.png)
+![security-default-pass](img/quickstart-self-service-security-tier-pass.png)
 
 
 
