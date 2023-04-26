@@ -611,7 +611,7 @@ The `platform` tier implements security policies for platform components such as
 
 > Security Policies in the `platform tier`
 
-![platform-tier](images/platform-tier.png)
+![platform-tier](img/platform-tier.png)
 
 ## `cluster-dns-allow-all` Security Policy
 
@@ -619,7 +619,7 @@ The `cluster-dns-allow-all` security policy will have rules to permit ingress DN
 
 > `cluster-dns-allow-all` Security Policy
 
-![dns-allow-all](images/dns-allow-all.png)
+![dns-allow-all](img/dns-allow-all.png)
 
 ## `ingress` Security Policy
 
@@ -627,7 +627,7 @@ The `ingress` security policy has rules to permit inbound traffic to the ingress
 
 > `ingress` Security Policy
 
-![ingress](images/security-ingress.png)
+![ingress](img/platform-tier-ingress.png)
 
 ## `platform-default-pass` Security Policy
 
@@ -635,5 +635,5 @@ The `platform-default-pass` security policy has the lowest precedence in the pla
  
 > `platform-default-pass` security policy
 
-![platform-default-pass](images/platform-default-pass.png)
+![platform-default-pass](img/platform-tier-pass.png)
 
