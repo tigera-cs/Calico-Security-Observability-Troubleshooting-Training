@@ -568,7 +568,7 @@ The `security` tier will be used to implement high-level guardrails for the clus
 
 > Security Policies in the `security tier`
 
-![security-tier](images/security-tier.png)
+![security-tier](img/1.quickstart-self-service-security-tier.png)
 
 ## `threatfeed` Security Policy
 
