@@ -553,4 +553,7 @@ management-ui   nginx   www.management-ui.com   172.16.10.0   80      28h       
 
 This lab uses the following tiers to secure the workloads.
 
-- `Security Tier`
+- `Security Tier` is used by the security team to implement the enterprise security controls.
+- `Platform Tier` is used by the platform team to implement the platform related policies.
+- `App Tier` is used by the application developers to implement the application specific policies at the namespace level.
+- `Default Tier` is used to implement the global default deny policy.
