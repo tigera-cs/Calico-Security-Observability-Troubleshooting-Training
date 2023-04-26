@@ -584,8 +584,8 @@ The `tenant-1-restrict` and `tenant-2-restrict` security policies will have ingr
 
 > `tenant-1-restrict` security policy
 
-![tenant-1-restrict](images/tenant-1-restrict.png)
-![tenant-1-pass](images/tenant-1-pass.png)
+![tenant-1-restrict](img/quickstart-self-service-tenant-1-restrict.png)
+![tenant-1-pass](img/quickstart-self-service-tenant-1-restrict-pass.png)
 
 > `tenant-2-restrict` security policy
 
