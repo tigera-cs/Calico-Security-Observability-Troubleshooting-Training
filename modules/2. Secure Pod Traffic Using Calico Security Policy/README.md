@@ -576,7 +576,7 @@ The `threatfeed` security policy will have a rule that denies egress connectivit
 
 > threatfeed security policy
 
-![threatfeed](images/threatfeed.png)
+![threatfeed](img/quickstart-self-service-threatfeed.png)
 
 ## `tenant-1-restrict` and `tenant-2-restrict` Security Policies
  
