@@ -548,3 +548,9 @@ kubectl get ingresses -n management-ui
 NAME            CLASS   HOSTS                   ADDRESS       PORTS   AGE
 management-ui   nginx   www.management-ui.com   172.16.10.0   80      28h            --------------------------> update the oputput
 ```
+
+### Lab Scenario 
+
+This lab uses the following tiers to secure the workloads.
+
+- `Security Tier`
