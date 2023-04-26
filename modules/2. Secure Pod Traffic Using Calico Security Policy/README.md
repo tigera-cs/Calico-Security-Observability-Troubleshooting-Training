@@ -11,7 +11,7 @@ This lab provides the instructions to:
 
 ### Overview
 
-Kubernetes' network model is both flexible and dynamic, enabling applications to be deployed anywhere in the cluster without being tied to the underlying network infrastructure. However, this can present challenges for legacy network firewalls that struggle to keep up with Kubernetes' constantly changing workloads. Calico provides a robust security policy framework that defines and enforces policies, ensuring that only authorized traffic flows between pods and services. Calico's powerful policy engine enhances the security of microservices architectures without compromising the flexibility and agility of Kubernetes. In this lab, we'll demonstrate how to use Calico's policy engine to secure some example microservices that blong to different tenants.
+Kubernetes' network model is both flexible and dynamic, enabling applications to be deployed anywhere in the cluster without being tied to the underlying network infrastructure. However, this can present challenges for legacy network firewalls that struggle to keep up with Kubernetes' constantly changing workloads. Calico provides a robust security policy framework that defines and enforces policies, ensuring that only authorized traffic flows between pods and services. Calico's powerful policy engine enhances the security of microservices architectures without compromising the flexibility and agility of Kubernetes. In this lab, we'll demonstrate how to use Calico's policy engine to secure some example microservices that blong to different tenants. We will also use Calico `Tiers` along with Kubernetes RBAC to enable priority based policy processing and control various team's access to Calico security policies.
 
 ### Cluster applications and connectivity
 
@@ -553,16 +553,15 @@ management-ui   nginx   www.management-ui.com   172.16.10.0   80      28h       
 
 #### Tiers
 
-This lab uses the following tiers to secure the workloads.
+This lab uses the following tiers and Kubernetes RBAC to secure the workloads.
 
-- `Security Tier` is used by the security team to implement the enterprise security controls.
-- `Platform Tier` is used by the platform team to implement the platform related policies.
-- `App Tier` is used by the application developers to implement the application specific policies at the namespace level.
-- `Default Tier` is used to implement the global default deny policy.
+- `Security Tier` is used by the security team to implement the enterprise security controls. Only security team along with the platform team who manages the platform have cluster-wide write access to the globalNetworkPolicy and networkPolicy in this tier.
+- `Platform Tier` is used by the platform team to implement the platform related policies. The platform team has cluster-wide unlimited access to the globalNetworkPolicy and networkPolicy in this tier and all the other tiers.
+- `App Tier` is used by the application developers to implement the application specific policies at the namespace level. Application developer team has namespace-evel write access to the networkPolicy in this tier.
+- `Default Tier` is used to implement the global default deny policy. Only platform team has unlimited access to this tier.
 
 #### Security Tier Policies Overview
 
-# The Security Tier
 
 The `security` tier will be used to implement high-level guardrails for the cluster. A `threatfeed` security policy will be enforced for all cluster workloads. The policy will `deny` egress connectivity to malicious IPs in the `threatfeed`. Tenant isolation is achieved by enforcing `tenant-1-restrict` and `tenant-2-restrict` security policies. These policies will ensure that the tenant workloads are isolated from the rest of the cluster workloads. 
 
@@ -570,7 +569,7 @@ The `security` tier will be used to implement high-level guardrails for the clus
 
 ![security-tier](img/1.quickstart-self-service-security-tier.png)
 
-## `threatfeed` Security Policy
+##### `threatfeed` Security Policy
 
 The `threatfeed` security policy will have a rule that denies egress connectivity to malicious external IPs which are dynamically updated from a threatfeed. The security policy will be a [globalnetworkpolicy](https://docs.tigera.io/reference/resources/globalnetworkpolicy) that applies to all cluster workloads/pods. 
 
@@ -578,7 +577,7 @@ The `threatfeed` security policy will have a rule that denies egress connectivit
 
 ![threatfeed](img/quickstart-self-service-threatfeed.png)
 
-## `tenant-1-restrict` and `tenant-2-restrict` Security Policies
+##### `tenant-1-restrict` and `tenant-2-restrict` Security Policies
  
 The `tenant-1-restrict` and `tenant-2-restrict` security policies will have ingress and egress rules required to isolate workloads in those tenants from the rest of the cluster workloads. Rules with the `pass` action will be used to defer security policy evaluation to subsequent tiers that match tenant-1 and tenant-2 workloads for flows that are deemed acceptable. All other ingress and egress flows will be explicitly denied using ingress and egress rules with the `deny` action. Note that the `tenant-1-restrict` and `tenant-2-restrict` policies **do not** `allow` traffic flows. The rules with the `pass` action enforce a high-level control for isolating those workloads from the rest of the cluster workloads; however, the specific traffic flows must be permitted by `allow` rules in security policies that match those workloads in subsequent tiers.  The `tenant-1-restrict` and `tenant-2-restrict` security policies will be [globalnetworkpolicy](https://docs.tigera.io/reference/resources/globalnetworkpolicy) with `NamespaceSelectors` that match tenant-01 and tenant-02 namespaces. 
 
