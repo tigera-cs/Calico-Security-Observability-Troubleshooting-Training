@@ -567,7 +567,7 @@ The `security` tier will be used to implement high-level guardrails for the clus
 
 > Security Policies in the `security tier`
 
-![security-tier](img/1.quickstart-self-service-security-tier.png)
+![security-tier](img/security-tier.png)
 
 ##### `threatfeed` Security Policy
 
@@ -575,7 +575,7 @@ The `threatfeed` security policy will have a rule that denies egress connectivit
 
 > threatfeed security policy
 
-![threatfeed](img/quickstart-self-service-threatfeed.png)
+![threatfeed](img/threatfeed.png)
 
 ##### `tenant-1-restrict` and `tenant-2-restrict` Security Policies
  
