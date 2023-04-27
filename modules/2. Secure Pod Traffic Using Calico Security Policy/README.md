@@ -29,7 +29,7 @@ This lab uses two applications that run across 4 namespaces and belong to two te
 
 
 <p align="center">
-<img src="img/3.tenants.png">
+<img src="img/tenants.png">
 </p>
 
 
