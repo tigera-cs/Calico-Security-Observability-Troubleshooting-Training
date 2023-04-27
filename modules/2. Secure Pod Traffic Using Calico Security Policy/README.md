@@ -636,7 +636,7 @@ The `platform-default-pass` security policy has the lowest precedence in the pla
 
 The application tier is used by Stars application team and Yaobank appication team to deploy policies for `Stars` app and `Yaobank` app respectively.
 
-- The Stars application team deploys fine-grained security policies for `Stars` app per each deployment in the names. Egress and Ingress security policies are required to permit traffic flows in and out of each deployment. 
+- The Stars application team deploys fine-grained security policies for `Stars` app per each deployment in the namespaces. Egress and Ingress security policies are required to permit traffic flows in and out of each deployment. 
 - The Yaobank application team deploys coarse-grained security policies for `Yaobank` app per namespace. A policy for a namespace will ensure that all workloads inside the namespace can communicate with one another. However, `rules` must permit traffic flows in and out of the namespace. 
 
 > Security Policies in the `application tier`
