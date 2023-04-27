@@ -583,13 +583,8 @@ The `tenant-1-restrict` and `tenant-2-restrict` security policies will have ingr
 
 > `tenant-1-restrict` security policy
 
-![tenant-1-restrict](img/quickstart-self-service-tenant-1-restrict.png)
-![tenant-1-pass](img/quickstart-self-service-tenant-1-restrict-pass.png)
-
-> `tenant-2-restrict` security policy
-
-![tenant-2-restrict](img/quickstart-self-service-tenant-2-restrict.png)
-![tenant-2-pass](img/quickstart-self-service-tenant-2-restrict-pass.png)
+![tenant-1-restrict](img/tenant-1-restrict.png)
+![tenant-1-pass](img/tenant-1-restrict-pass.png)
 
 
 ## `security-default-pass` Security Policy
@@ -598,7 +593,7 @@ The `security-default-pass` security policy will have the lowest precedence in t
 
 > security-default-pass security policy
 
-![security-default-pass](img/quickstart-self-service-security-tier-pass.png)
+![security-default-pass](img/security-tier-pass.png)
 
 
 #### Platform Tier Policies Overview
@@ -610,7 +605,7 @@ The `platform` tier implements security policies for platform components such as
 
 > Security Policies in the `platform tier`
 
-![platform-tier](img/platform-tier.png)
+![platform-tier](img/platform-tier-pass.png)
 
 ## `cluster-dns-allow-all` Security Policy
 
