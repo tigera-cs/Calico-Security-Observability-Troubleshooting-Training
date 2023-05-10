@@ -1,0 +1,9 @@
+1. Install Calico Enterprise
+2. Security policy lab break down
+-
+-
+- 
+3. Auto HEP
+4. Wireguard
+5. Compliance Reporting
+6. Observability
