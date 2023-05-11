@@ -2,14 +2,14 @@
 This is the the hands-on lab guide for Calico Security, Observability, and Troubleshooting Training.
 
 <p align="center">
-<img src="/img/1.Calico-Cat-Tigera-Shirt.png" width="300" height="300">
+<img src="img/1.Calico-Cat-Tigera-Shirt.png" width="300" height="300">
 </p>
   
 ## Lab setup
 
 The following diagram depicts the lab setup used for the entire training.
 
-<img src="/img/2.Lab-Topology.png">
+<img src="img/2.Lab-Topology.png">
 
 
 
@@ -36,7 +36,7 @@ To ssh into the lab instances, type the following commands. The associated IP ad
 * ssh worker2
 
 
-## Lab modules
+## Lab modules (to be updated)
 
 [1. Install Calico Enterprise](https://github.com/Pooriya-a/CalicoEnterprise-Networking-Training/tree/main/1.%20Install%20Calico%20Enterprise)
 
