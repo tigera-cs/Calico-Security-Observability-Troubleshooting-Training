@@ -1,4 +1,4 @@
-Notes: Move the flowlog flush interval commands to the beginning of the labs.
+
 # In this lab
 
 This lab provides the instructions to:
@@ -29,10 +29,7 @@ This lab uses two applications that run across 4 application namespaces and belo
   - Yaobank app
     -  `yaobank` namespace
 
-
-<p align="center">
-<img src="img/tenants.png">
-</p>
+<p align="center"> <img src="img/tenants.png" height="700px" width="900px"> </p>
 
 
 #### Deploy `Star` App
@@ -518,8 +515,8 @@ management-ui   <none>   stars.tigeralab1.labs.tigera.fr   10.0.1.30,10.0.1.31  
 
 Check the connectivity to the customer service `https:\\stars.<LabName>.labs.tigera.fr` via your browser.
 
+<img src="img/stars-ui.png" height="700px" width="900px">
 
-![stars-ui](img/stars-ui.png)
 
 
 ##### Yaobank Ingress resource
