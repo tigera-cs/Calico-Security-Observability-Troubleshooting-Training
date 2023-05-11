@@ -15,9 +15,10 @@ Container Network Interface is an initiative from the Cloud-Native Computing Fou
 
 _______________________________________________________________________________________________________________________________________________________________________
 
+
 ### Install Calico Enterprise
 
- In this lab environment, Kubernetes has been preinstalled, but as your network plugin is not installed yet your nodes will appear as NotReady. This section walks you through the required steps to install Calico Enteprise as both the CNI provider and network policy engine provider.
+ In this lab environment, Kubernetes has been preinstalled, but since your network plugin is not installed yet your nodes will appear as NotReady. This section walks you through the required steps to install Calico Enteprise as both the CNI provider and network policy engine provider.
 
 1. Before getting started, let's enable bash autocomplete for kubectl so that we can easier interact with kubectl.
 
@@ -274,12 +275,14 @@ monitor               True        False         False      7m53s
 
 ```bash
 kubectl create -f /home/tigera/license.yaml
+
 ```
 
 18. Watch the status of various components progressing. Ensure that all the components are AVAILABLE and there is no components in PROGRESSING or DEGRADED status before moving forward. This can take few minutes.
 
 ```bash
 watch kubectl get tigerastatus
+
 ```
 
 You should see an output similar to the following, which denotes Calico Enterprise is fully deployed in the cluster.
@@ -349,7 +352,7 @@ metadata:
     kubernetes.io/ingress.class: "nginx"
 spec:
   rules:
-  - host: "manager.<LABNAME>.lynx.tigera.ca"
+  - host: "manager.<LABNAME>.labs.tigera.fr"
     http:
       paths:
       - path: /
@@ -366,7 +369,7 @@ EOF
 2. Check your access to the yaobank application and CE Manager UI using the following URLs. Make sure to replace `<LABNAME>` with the name of your lab instance.
 
 ```bash
-https://manager.<LABNAME>.lynx.tigera.ca
+https://manager.<LABNAME>.labs.tigera.fr
 ```
 
 3. Calico Enterprise Manager UI by default supports token-based auth. Let's create a serviceaccount so that we can use the associated token to log into the Manager UI. 
@@ -396,11 +399,11 @@ kubectl create token tigercub --duration=24h
 **Note:** Do not foroget to replace `<LABNAME>` with your lab instance name.
 
 ```
-https://manager.<LABNAME>.lynx.tigera.ca
+https://manager.<LABNAME>.labs.tigera.fr
 ```
 You shouls see a page similar to the following.
 
-![ce-manager-ui](img/3.Calico-enteprise-manager-ui.JPG)
+<img src="manager-ui.png" height="700px" width="900px">
 
 
 8. Calico Enterprise by default installs Kibana, which provides visualization for the data stored in ElasticSearch. To access Kibana, you will use the default `elastic` username. In order to retrieve the password, execute the following command.
