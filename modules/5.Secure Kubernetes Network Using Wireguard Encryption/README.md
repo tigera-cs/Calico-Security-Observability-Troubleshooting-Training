@@ -3,7 +3,7 @@
 This lab provides the instructions to:
 
 * [Overview](https://github.com/tigera-cs/Calico-Security-Observability-Troubleshooting-Training/blob/main/1.%20Install%20Calico%20Enterprise/README.md#overview)
-* [Configure automatic host endpoint protection]()
+* [Enable Calico Wireguard encryption]()
 
 
 
@@ -19,7 +19,10 @@ Network encryption is crucial for maintaining the security and privacy of data a
 - https://docs.tigera.io/calico-enterprise/latest/compliance/encrypt-cluster-pod-traffic
 
 
-### Configure Calico Wireguard encryption
+____________________________________________________________________________________________________________________________________________________________________________________
+
+
+### Enable Calico Wireguard encryption
 
 1. WireGuard is included in Linux 5.6+ kernels. Before enabling Wireguard in this cluster, ssh into each nodes (`control1`, `worker1`, `worker2`) in the cluster and run the following commands to make sure each node has the minimum Wireguard configuration requirements.
 
@@ -57,7 +60,7 @@ kubectl patch felixconfiguration default --type='merge' -p '{"spec":{"wireguardE
 
 ```
 
-3. To validate Wireguard is enabled on the cluster nodes, we will need to check the node status for Wireguard entries with the following command. Note how Calico has assigned an IPv4 address from Calico IPPool to each node along with the `WireguardPublicKey` configurations.
+3. To validate Wireguard is enabled on the cluster nodes, we will need to check the node resource status for Wireguard entries with the following command. Note how Calico has assigned an IPv4 address from Calico IPPool to each node along with the `WireguardPublicKey` configurations.
 
 ```bash
 kubectl get nodes -o yaml | grep 'kubernetes.io/hostname\|projectcalico.org/IPv4Address\|Wireguard'
@@ -81,7 +84,7 @@ You should see an output similar to the following.
       kubernetes.io/hostname: ip-10-0-1-31.eu-west-1.compute.internal
 ```
 
-4. ssh into one of the cluster nodes to further valdiate and look into Wireguard configurations.
+4. ssh into one of the cluster nodes to further validate and look into Wireguard configurations.
 
 ```bash
 ssh worker1
@@ -119,7 +122,7 @@ wg-quick.target is a disabled or a static unit, not starting it.
 Processing triggers for man-db (2.9.1-1) ...
 ```
 
-6. Run the following command to validate Wireguard configurations. Get yourself familar with the output. This cluster runs three nodes. Each Wireguard node has two peers as show below. Felix configures `allowed ips` to implement granular access control in terms of what traffic is allowed through the tunel.
+6. Run the following command to validate Wireguard configurations. Get yourself familar with the output. This cluster runs three nodes. Each Wireguard node has two peers as shown below. Felix configures `allowed ips` to implement granular access control in terms of what traffic is allowed through the tunnel.
 
 ```bash
 sudo wg
@@ -168,7 +171,7 @@ ip-10-0-1-31.eu-west-1.compute.internal
 
 ```
 
-7. To validate pod network encryption using Wireguard, we will deploy two pods (pod-1 in worker1 and pod-2 in worker2), initiate the traffic between the two pods and view the traffic by using the tcpdump command.
+8. To validate pod network encryption using Wireguard, we will deploy two pods (pod-1 in worker1 and pod-2 in worker2), initiate the traffic between the two pods and view the traffic by using the tcpdump command.
 
 ```bash
 kubectl apply -f -<<EOF
@@ -219,8 +222,9 @@ pod-2   1/1     Running   0          2m53s   10.48.0.60    ip-10-0-1-31.eu-west-
 sudo tcpdump -i wireguard.cali host <ip address of pod-2>
 ```
 
-10. At this point, we will need to establish connections from `pod-1` to `pod-2` to see traffic on Wireguard interface on the two nodes. However, since this cluster does not allow application connectivity that is not explicitly allowed, We will need to make sure we allow such connectivity through Calico security policy. Deploy the following policy to allow connectivity between `pod-1` to `pod-2`.
-`Note:` In production environment where default deny is implemented in the cluster, application need to be deployed with their required and validated security policy to ensure application connectivity.
+10. At this point, we will need to establish connections from `pod-1` to `pod-2` to see traffic on Wireguard interface on the two nodes. However, since this cluster does not allow application connectivity that is not explicitly allowed, we will need to make sure we allow such connectivity through Calico security policy first. Deploy the following policy to allow connectivity between `pod-1` to `pod-2`.
+
+`Note:` In production environment where default deny is implemented in the cluster, applications need to be deployed with their required and validated security policy to ensure application connectivity.
 
 ```yaml
 kubectl apply -f -<<EOF
@@ -243,9 +247,9 @@ spec:
     - action: Allow
       protocol: ICMP
       source:
-        selector: run == "pod-2"
-      destination:
         selector: run == "pod-1"
+      destination:
+        selector: run == "pod-2"
   types:
     - Ingress
     - Egress
@@ -268,7 +272,7 @@ PING 10.48.0.60 (10.48.0.60) 56(84) bytes of data.
 64 bytes from 10.48.0.60: icmp_seq=150 ttl=62 time=0.374 ms
 ```
 
-On worker1 and worker2, you should receive an output similar to the followings.
+On worker1 and worker2, you should receive an output similar to the followings. If you do not see the following output, make sure the two pods are scheduled on the designated nodes. If the two pods are scheduled on the same node, you will not see any traffic in the output of tcpdump.
 
 ##### Worker1
 ```bash 
@@ -297,11 +301,12 @@ listening on wireguard.cali, link-type RAW (Raw IP), capture size 262144 bytes
 
 12. Browse to Calico Manager UI, select `Dashboard` from the left navigation pane, make sure Wireguard stats are enabled from the `Customize Layout` from the top right corner of `Dashboard` page. Then scroll to the bottom of the page and view Wireguard stats.
 
-![customize-layout](img/customize-layout.png)
+<img src="img/customize-layout.png">
 
-![wireguard-dashboard](img/wireguard-dashboard.png)
+<img src="img/wireguard-dashboard.png"  height="500px" width="900px">
 
-13. We have locked down our clusters using security policies in the previous labs. However, we did not need to configure any rules to allow Wireguard traffic to go through. This is because Felix configures the necessary iptables/ebpf rules to allow Wireguard traffic.Run the following command on one of the cluster nodes to see the iptables rules that felix has implemented on that node. You should see a similar output on any Wireguard enabled node in the cluster.
+
+13. We have locked down our clusters using security policies in the previous labs. However, we did not need to configure any rules to allow Wireguard traffic to go through. This is because Felix configures the necessary iptables/ebpf rules to allow Wireguard traffic. Run the following command on one of the cluster nodes to see the iptables rules that felix has implemented on that node. You should see a similar output on any Wireguard enabled node in the cluster.
 
 ```bash
 ssh control1
@@ -320,3 +325,5 @@ you should receive an output similar to the following.
 -A cali-OUTPUT -p udp -m comment --comment "cali:o2S0bt1hL_KIBcHM" -m comment --comment "Allow outgoing IPv4 Wireguard packets" -m multiport --dports 51820 -m addrtype --src-type LOCAL -j ACCEPT
 -A cali-POSTROUTING -o wireguard.cali -m comment --comment "cali:TRTYUg_Kf3b5HCgm" -m addrtype ! --src-type LOCAL --limit-iface-out -m addrtype --src-type LOCAL -j MASQUERADE --random-fully
 ```
+
+> ## You have completed `5.Secure Kubernetes Network Using Wireguard Encryption` lab. Next lab:  [5.Secure Kubernetes Network Using Wireguard Encryption](https://github.com/tigera-cs/quickstart-self-service/blob/main/modules/analyze-networksets-external-services.md) 

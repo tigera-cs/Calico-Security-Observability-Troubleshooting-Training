@@ -11,19 +11,23 @@ This lab provides the instructions to:
 
 
 Calico Enterprise uses host endpoints to represent network interfaces on a host, which can be secured using Calico security policy. Host endpoints can have labels and be selected for policy rules alongside workload endpoints/pods. Even though host endpoint implementation can be automated by systems engineers, it is a manual approach to protect your cluster nodes. Calico also provides auto-host endpoint feature, which is an automated approach to create the host endpoints. 
-Calico creates an auto (managed) host endpoint for each node that has the same labels and IP addresses as the node itself. These managed host endpoints are periodically synchronized to ensure they maintain the same labels and IP addresses as their corresponding nodes. Policies that target these auto host endpoints will continue to function correctly even if the underlying node's IPs or labels change over time. Automatic host endpoints secure all of the host's interfaces (i.e. in Linux, all the interfaces in the host network namespace) by setting host endpoint interfaceName: "*". In this lab, we will explore how to enhance the security of your cluster nodes/host networked pods using Calico auto host endpoint feature with minimal amount of effort and configurations.
+Calico creates an auto (managed) host endpoint for each node that has the same labels and IP addresses as the node itself. These managed host endpoints are periodically synchronized to ensure they maintain the same labels and IP addresses as their corresponding nodes. Policies that target these auto host endpoints will continue to function correctly even if the underlying nodes' IPs or labels change over time. Automatic host endpoints secure all of the host's interfaces (i.e. in Linux, all the interfaces in the host network namespace) by setting host endpoint interfaceName: "*". Host endpoint protect traffic that is initiated or terminated at the host and does not apply to the forwarded traffic such as pod traffic. In this lab, we will explore how to enhance the security of your cluster nodes/host networked pods using Calico auto host endpoint feature with minimal amount of effort and configurations.
 
-Note: Using host endpoint protection requires a lot of cautious and validation to ensure the required connectivity for the cluster nodes/host networked pods is allowed. Failing to implement the required rules to allow the required host netwok traffic could cause sever impact on your cluster connectivity and operations. It is recommended to use Calico flow logs to ensure all the required connectivity is allowed before enforcing default deny in your cluster.
+Note: Using host endpoint protection requires a lot of cautious and validation to ensure the required connectivity for the cluster nodes/host networked pods is allowed. Failing to implement the required rules to allow the host netwok traffic could cause sever impact on your cluster connectivity and operations. It is recommended to have fail-safe rules in place before enabling host end point protection and use Calico flow logs to ensure all the required connectivity is allowed before enforcing default deny in your cluster.
+
 
 #### Documentation
 
 - https://docs.tigera.io/calico-enterprise/latest/reference/resources/hostendpoint
 - https://docs.tigera.io/calico-enterprise/latest/network-policy/hosts/kubernetes-nodes
 
+____________________________________________________________________________________________________________________________________________________________________________________
 
 ### Configure automatic host endpoint protection
 
 1. Before moving forward with implementing policies for cluster nodes and host networked pod, let's validate that the feature is already activated. Auto host endpoint is configured and managed by `calico-kube-controller-manager`, which is configured by `kubecontrollersconfigurations` resource. Run the following command and ensure `spec.controllers.node.hostEndpoint.autoCreate: Enabled`.
+
+`Note:` We enabled this feature in the previous lab to protect nginx controller host networked pods traffic.
 
 ```bash
 kubectl get kubecontrollersconfigurations default -o yaml
@@ -103,7 +107,14 @@ spec:
     source: {}
 ```
 
-4. Label your nodes, which should be kept intact across the upgrades and cluster rebuilds. This label will be used to allow traffic to and from the host and host networked pods and must always stay assigned to hosts for connectivity. 
+4. Run the following command and see how the above profile is referenced in the host endpoint for the control plane node. This profile is ,by default, attached to all the heps.
+
+```bash
+kubectl get hep $(kubectl get hep | egrep ip-10-0-1-20) -o yaml
+
+```
+
+5. Label your nodes with keys and values, which should be kept intact across the upgrades and cluster rebuilds. This label will be used to allow traffic to and from the host and host networked pods and must always stay assigned to hosts for connectivity. 
 
 ```bash
 kubectl label nodes projectcalico.org/auto-hep=true --all
@@ -118,11 +129,11 @@ node/ip-10-0-1-30.eu-west-1.compute.internal labeled
 node/ip-10-0-1-31.eu-west-1.compute.internal labeled
 ```
 
-5. `calico-kube-controllers` deployment has a node controller inside it that continously ensures all the labels assigned to the cluster nodes are inherited by Calico host endpoints. Run the followings command and compare the labels assigned to the Kubernetes nodes and Calico `node` resource. If needed, adjust your grep query to view all the labels.
+6. `calico-kube-controllers` deployment has a node controller inside it that continuously ensures all the labels assigned to the cluster nodes are inherited by Calico host endpoints. Run the following command and compare the labels assigned to the Kubernetes nodes and Calico `node` resource. If needed, adjust your grep query to view all the labels.
 
 
 ```bash
-kubectl get nodes -o yaml | grep -A8 labels
+kubectl get nodes -o yaml | grep -A15 labels
 
 ```
 
@@ -238,7 +249,7 @@ kubectl get hep -o yaml | grep -A15 labels
 ```
 
 
-6. This lab uses dns policy, which requires dns server configurations for cluster nodes to be included in felixconfigurations `dnsTrustedServers`. If this configuration is not in place, felix will not trust cluster nodes DNS server and does not listen for name resolution from this servers. As a result, DNS policy for cluster nodes/host networked pods does not work.
+7. This lab uses dns policy, which requires dns servers used for the cluster nodes to be included in felixconfigurations `dnsTrustedServers`. If this configuration is not in place, felix will not trust the cluster nodes DNS server and does not listen for name resolution from this servers. As a result, DNS policy for cluster nodes/host networked pods does not work.
 
 ```yaml
 kubectl replace -f -<<EOF
@@ -261,9 +272,9 @@ EOF
 
 ```
 
-7. Deploy the following  `globalnetworkpolicy` to allow the required communication for the hosts and host networked pods running in this cluster. Get yourself familiar with the rules included in the following manifest.
+8. Deploy the following  `globalnetworkpolicy` to allow the required communication for the hosts and host networked pods running in this cluster. Get yourself familiar with the rules included in the following manifest.
 
-`Note:` If you plan to use host endpoint protection, you need to make sure to account for all the required connectivity for your hosts and host networked pods before enabling host endpoint protection. Otherwise, your cluster connectivity might get severly impacted or you might get locked out of the clustr. The other way to do this is to use a fail-safe staged global default deny policy making sure there is a policy allowing traffic before default deny is impacted. We have used the latter approach in this lab.
+`Note:` If you plan to use host endpoint protection, you need to make sure to account for all the required connectivity for your hosts and host networked pods before enabling host endpoint protection. Otherwise, your cluster connectivity might get severly impacted or you might completely get locked out of the clustr. The other way to do this is to use a fail-safe staged global default deny policy making sure there is a policy allowing traffic before default deny is implemented. We have used the latter approach in this lab.
 
 ```yaml
 kubectl apply -f -<<EOF
@@ -333,14 +344,15 @@ spec:
       destination:
         selector: k8s-app == "tigera-secure-es-gateway"
         namespaceSelector: projectcalico.org/name == "tigera-elasticsearch"
-### Egress connections to destinations outside the cluster for image downloads, apt update, vault, database, etc.
+### Egress connections to destinations outside the cluster for image downloads, apt update, vault, database, etc. 
     - action: Allow
       source: {}
       destination:
         domains:
           - '*.quay.io'
           - storage.googleapis.com
-          - k8s.gcr.i0
+          - gcr.io
+          - '*.gcr.io'
           - '*.ubuntu.com'
           - '*.docker.io'
           - '*.docker.com'
@@ -382,15 +394,15 @@ EOF
 
 ```
 
-8. Validate your implemented policies are working as expected. Run the following query on the `Discover` page in `Kibana`. Once you make sure there is no legitimate traffic is hitting the staged default deny policy, go the Calico Manager UI and convert you staged default deny policy to enforced.
+9. Validate your implemented policies are working as expected. Run the following query on the `Discover` page in `Kibana`. Once you make sure there is no legitimate traffic is hitting the staged default deny policy, go to the Calico Manager UI and convert you staged default deny policy to enforced.
 
 `Note:` This lab runs kubeadm clusters in shared AWS infrastructure and you might see some traffic hitting the staged default deny policy. However, we identified these traffic shown in the screenshot below are not required by the cluster connectivity and decided to deny the traffic. One such traffic was from the cluster nodes to aws metadata IP address of `169.254.169.254`.
 
 ```bash
 policies:{all_policies: *staged\:default-deny*} and action: "allow" 
 ```
-![aws-undesired-traffic](img/aws-undesired-traffic.png)
 
+<img src="img/aws-undesired-traffic.png">
 
 10. Generate some flow logs by browsing to `https://stars.<LABNAME>.labs.tigera.fr` and `https://yaobank.<LABNAME>.labs.tigera.fr`. 
 
@@ -403,11 +415,13 @@ policies:{all_policies: *staged\:default-deny*} and action: "allow"
 
 12. Navigate to `ServiceGraph` and see how felix graphs connections from host networked ingress controllers to the `management-ui` pods. 
 
-![hep-servicegraph](img/hep-servicegraph.png)
+`Note:` To see the connections from the the host networked pods to the pods, in this case `management-ui`, you will to have loggined with an account that has access to the `Node` resource in `projectcalico.org/v3`. In this case, check ServiceGraph using `platform` service account.
 
 
+<img src="img/hep-servicegraph.png"> \
 
-9. Calico implements fail-safe rules (ports) to ensure critical cluster services continue to function and you will not lock yourself outside the cluster. In this lab, we left these rules intact. If you need to remove failsafe rules, you could do so using felixconfigurations. However, before doing so you will need to be sure that all the required ports connectivity are implemented using globalnetworkpolicy. Fail-safe rules are eforced by felix and are the same across the cluster nodes. To see the fail-safe ports, ssh into one of the cluster nodes and run the following command. For further information about failsafe ports, see `failsafeInboundHostPorts` and `failsafeOutboundHostPorts` in the following link.
+
+13. Calico implements fail-safe rules (ports) to ensure critical cluster services continue to function and you will not lock yourself outside the cluster. In this lab, we left these rules intact. If you need to remove failsafe rules, you could do so using felixconfigurations. However, before doing so you will need to be sure that all the required ports are implemented using globalnetworkpolicy. Fail-safe rules are eforced by felix and are the same across the cluster nodes. To see the fail-safe ports, ssh into one of the cluster nodes and run the following command. For further information about failsafe ports, see `failsafeInboundHostPorts` and `failsafeOutboundHostPorts` in the following link.
 
 https://docs.tigera.io/calico-enterprise/latest/reference/resources/felixconfig
 
@@ -458,3 +472,7 @@ You should see an output similar to the following.
 -A cali-fh-any-interface-at-all -m comment --comment "cali:NnqjZhu9yccY4C7-" -j cali-failsafe-in
 -A cali-th-any-interface-at-all -m comment --comment "cali:Pk4AU-xuUwtwrLN6" -j cali-failsafe-out
 ```
+
+`Note:` Before finishing this lab, ensure that the default-deny policy is enforced mode and not staged mode. Following labs require enforced default deny to to be in place.
+
+> ## You have completed `3.Secure Cluster Node Traffic Using Calico Auto HEP` lab. Next lab: [4.Secure Workload Egress Access Using Calico DNS Policy](https://github.com/tigera-cs/quickstart-self-service/blob/main/modules/analyze-networksets-external-services.md) 

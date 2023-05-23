@@ -1,1 +1,3 @@
 Update the main readme fine with the (Lab modules). This is the introduction page.
+Include each lab with the link to the next lab at the end of each lab.
+update the links for each lab.

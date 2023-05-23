@@ -12,8 +12,13 @@ This lab provides the instructions to:
 
 Container Network Interface is an initiative from the Cloud-Native Computing Foundation. It is a set of interface standards that define how the container runtime engine (docker, cri-o, containerd, others) and the cni plugin work together to dynamically connect a pod to the network. Kubernetes defines the specification of the network model, but the actual implementation of the network model is abstracted from Kubernetes and Kubernetes uses the CNI for that. Upstream Kubernetes by default does not provide a network interface plugin. In this lab, we will walk through the process of installing Calico Enterprise as the CNI and security policy provider.
 
+#### Documentation
 
-_______________________________________________________________________________________________________________________________________________________________________
+- https://docs.tigera.io/calico-enterprise/latest/getting-started/
+- https://docs.tigera.io/calico-enterprise/latest/getting-started/install-on-clusters/kubernetes/generic-install
+
+
+_____________________________________________________________________________________________________________________________________________________________________________________
 
 
 ### Install Calico Enterprise
@@ -75,6 +80,7 @@ EOF
 
 ```bash
 kubectl get storageclass
+
 ```
 ```bash
 NAME                   PROVISIONER                    RECLAIMPOLICY   VOLUMEBINDINGMODE      ALLOWVOLUMEEXPANSION   AGE
@@ -84,7 +90,8 @@ tigera-elasticsearch   kubernetes.io/no-provisioner   Delete          WaitForFir
 5. The Tigera Operator is a Kubernetes operator and provides a well-defined API for how you install, configure, and run Calico Enterprise. Tigera operator also automates and controls the the lifecycle of a Calico Enterprise deployment. Tigera operator manifest configures the necessary resources such as custom resource definitions, namespaces, services accounts, clusterroles, etc so that cluster is ready to deploy other calico Enterprise components. Get yourself familiar with the content of the manifest and create it in the cluster.
 
 ```bash
-kubectl create -f https://docs.tigera.io/manifests/tigera-operator.yaml
+kubectl create -f https://downloads.tigera.io/ee/v3.16.1/manifests/tigera-operator.yaml
+
 ```
 
 6. Validate that the tigera-operator is running in the cluster. Note that the tigera-operator is running even though there is no CNI plugin deployed in the cluster. This is because tigera-operator is host networked meaning that it uses the host IP address to communicate over the network.
@@ -105,7 +112,8 @@ tigera-operator-54f8b4545c-bffkc   1/1     Running   0          10s   10.0.1.31 
 
 
 ```bash
-kubectl create -f https://docs.tigera.io/manifests/tigera-prometheus-operator.yaml
+kubectl create -f https://downloads.tigera.io/ee/v3.16.1/manifests/tigera-prometheus-operator.yaml
+
 ```
 
 8. Check the tigera-prometheus pod status. 
@@ -157,6 +165,7 @@ Run the following command to see if there is any resources in the calico-system 
 
 ```bash
 kubectl get all -n calico-system
+
 ```
 
 Installation resouce is also responsible for certain install time configuration parameters such as IPPOOL configuration, MTU, and etc. For complete info on the Installation resource configurations, please visit the following link.
@@ -169,6 +178,7 @@ We have customized the installation resource for this lab. We have defined an IP
 
 ```bash
 kubectl cluster-info dump | grep -m 2 -E "service-cluster-ip-range|cluster-cidr"
+
 ```
 ```bash
                             "--service-cluster-ip-range=10.49.0.0/16",
@@ -221,8 +231,6 @@ watch kubectl get pods -A
 
 ```
 ```bash
-Every 2.0s: kubectl get pods -A                                                                                                                                                                                                                                                                                                         bastion: Wed Dec 28 23:50:12 2022
-
 NAMESPACE              NAME                                                              READY   STATUS    RESTARTS   AGE
 calico-system          calico-kube-controllers-7b4fd8c4dc-smcrl                          1/1     Running   0          2m14s
 calico-system          calico-node-fh6mk                                                 1/1     Running   0          2m9s
@@ -258,8 +266,6 @@ Alternatively, you could use the following command to watch the status of variou
 watch kubectl get tigerastatus
 ```
 ```bash
-Every 2.0s: kubectl get tigerastatus                                                                                                                                                                                                                                                                                                    bastion: Wed Dec 28 23:57:31 2022
-
 NAME                  AVAILABLE   PROGRESSING   DEGRADED   SINCE
 apiserver             True        False         False      7m48s
 calico                True        False         False      8m43s
@@ -388,7 +394,6 @@ kubectl create clusterrolebinding tigercub-bind --clusterrole tigera-network-adm
 5. Run the following command to retrieve the token for the serviceaccount we just created.
 
 ```bash
-kubectl get secret $(kubectl get serviceaccount tigercub -o jsonpath='{range .secrets[*]}{.name}{"\n"}{end}' | grep token) -o go-template='{{.data.token | base64decode}}' && echo
 kubectl create token tigercub --duration=24h
 
 ```
@@ -403,8 +408,7 @@ https://manager.<LABNAME>.labs.tigera.fr
 ```
 You shouls see a page similar to the following.
 
-<img src="manager-ui.png" height="700px" width="900px">
-
+<img src="img/manager-ui.png" height="700px" width="900px">
 
 8. Calico Enterprise by default installs Kibana, which provides visualization for the data stored in ElasticSearch. To access Kibana, you will use the default `elastic` username. In order to retrieve the password, execute the following command.
 
@@ -416,6 +420,7 @@ kubectl -n tigera-elasticsearch get secret tigera-secure-es-elastic-user -o go-t
 
 10. Open Kibana login page by clicking on the Kibana icon on the Manager UI navigation bar on the left side of your browser page. You should a page similar to the following. Insert your username and password.
 
-![kibana](img/4.Calico-enteprise-kibana.JPG)
+<img src="img/kibana-ui.png" height="700px" width="900px">
 
-> **Congratulations! You have completed `1. Install Calico Enterprise` lab.** 
+
+> ## You have completed `1. Install Calico Enterprise` lab. Next lab: [ 2.Secure Pod Traffic Using Calico Security Policy](https://github.com/tigera-cs/quickstart-self-service/blob/main/modules/analyze-networksets-external-services.md) 
