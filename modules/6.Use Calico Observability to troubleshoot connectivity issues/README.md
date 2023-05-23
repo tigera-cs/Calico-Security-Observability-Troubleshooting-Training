@@ -874,46 +874,7 @@ kubectl -n tigera-elasticsearch get secret tigera-secure-es-elastic-user -o go-t
   <img src="Images/29.m2lab5-6.png" alt="Security Policy - Denied Policy" align="center" width="800">
 </p>
 
-#### i. After changing the Ingress rule to ***Pass*** in the “tenant-hipstershop” Security Policy, the Online Boutique should be accessible again.
-
-### LAB
-
-#### a. Open the lab and run the script below:
-
-```bash
-/home/tigera/Calico-Security-Observability-Troubleshooting-Training/tsworkshop/workshop1/lab-script.sh
-```
-
-#### b. Type the option “6” (LAB Break Online Boutique - Kibana) and press “Enter”
-
-#### c. Type "99" and press “Enter” to exit the script
-
-#### d. Open the browser with the URL shown through the command below:
-
-```bash
-https://hipstershop.<LabName>.labs.tigera.fr
-```
-
-#### e. Select any product(s), add to the Cart and click on “Place Order”.
-
-#### f. An internal server error will return saying “failed to get user cart during checkout”
-
-```nano
-HTTP Status: 500 Internal Server Error
-rpc error: code = Internal desc = cart failure: failed to get user cart during checkout: rpc error: code = Unavailable desc = connection error: desc = "transport: Error while dialing dial tcp 10.49.114.104:7070: i/o timeout"
-failed to complete the order
-main.(*frontendServer).placeOrderHandler
-```
-
-<p align="center">
-  <img src="Images/30.m2lab6-1.png" alt="Online Boutique - 500 Internal Server Error" align="center" width="800">
-</p>
-
-#### g. Investigate through the Kibana which flows have been denied and the Security Policy related to it, and how to fix this issue. Use the hipstershop application information provided at the start of this module.
-
-#### h. To revert back the misconfiguration applied, run the script and type “61” (LAB Fix Online Boutique - Kibana) and press Enter. To exit type "99" and press “Enter”.
-
-
+12. After changing the Ingress rule to ***Pass*** in the “tenant-hipstershop” Security Policy, the Online Boutique should be accessible again.
 
 
 > ## You have completed `5.Secure Kubernetes Network Using Wireguard Encryption` lab. Next lab:  [5.Secure Kubernetes Network Using Wireguard Encryption](https://github.com/tigera-cs/quickstart-self-service/blob/main/modules/analyze-networksets-external-services.md)  
