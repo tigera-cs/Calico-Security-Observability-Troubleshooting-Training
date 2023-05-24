@@ -3,7 +3,7 @@
 This lab provides the instructions to:
 
 * [Overview](https://github.com/tigera-cs/Calico-Security-Observability-Troubleshooting-Training/blob/main/modules/3.Secure%20Cluster%20Node%20Traffic%20Using%20Calico%20Auto%20HEP/README.md#overview)
-* [Configure automatic host endpoint protection]()
+* [Configure automatic host endpoint protection](https://github.com/tigera-cs/Calico-Security-Observability-Troubleshooting-Training/blob/main/modules/3.Secure%20Cluster%20Node%20Traffic%20Using%20Calico%20Auto%20HEP/README.md#configure-automatic-host-endpoint-protection)
 
 
 
