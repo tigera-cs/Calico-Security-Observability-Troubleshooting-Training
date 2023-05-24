@@ -2,8 +2,8 @@
 
 This lab provides the instructions to:
 
-* [Overview](https://github.com/tigera-cs/Calico-Security-Observability-Troubleshooting-Training/blob/main/1.%20Install%20Calico%20Enterprise/README.md#overview)
-* [Secure pod egress traffic using DNS policy]()
+* [Overview](https://github.com/tigera-cs/Calico-Security-Observability-Troubleshooting-Training/blob/main/modules/4.Secure%20Workload%20Egress%20Access%20Using%20Calico%20DNS%20Policy/README.md#overview)
+* [Secure pod egress traffic using DNS policy](https://github.com/tigera-cs/Calico-Security-Observability-Troubleshooting-Training/blob/main/modules/4.Secure%20Workload%20Egress%20Access%20Using%20Calico%20DNS%20Policy/README.md#secure-pod-egress-traffic-using-dns-policy)
 
 
 
