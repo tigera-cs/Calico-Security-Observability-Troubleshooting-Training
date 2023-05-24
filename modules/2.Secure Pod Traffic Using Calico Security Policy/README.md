@@ -5,7 +5,10 @@ This lab provides the instructions to:
 
 * [Overview](https://github.com/tigera-cs/Calico-Security-Observability-Troubleshooting-Training/blob/main/modules/2.Secure%20Pod%20Traffic%20Using%20Calico%20Security%20Policy/README.md#overview)
 * [Deploy sample microservices and ingress resources](https://github.com/tigera-cs/Calico-Security-Observability-Troubleshooting-Training/blob/main/modules/2.Secure%20Pod%20Traffic%20Using%20Calico%20Security%20Policy/README.md#deploy-sample-microservices-and-ingress-resources)
-
+* [Configure Tiers and RBAC]()
+* [Secure pod traffic using Calico security policy]()
+* [Build your policies]()
+* [Validate and enforce connectivity]()
 
 
 
@@ -1168,7 +1171,7 @@ kubectl create token tenant2 -n yaobank --duration=24h
 
 ```
 
-### 2.Secure pod traffic using Calico security policy
+### Secure pod traffic using Calico security policy
 
 #### Security tier policies overview
 
