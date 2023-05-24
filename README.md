@@ -42,10 +42,12 @@ To ssh into the lab instances, type the following commands. The associated IP ad
 
 [2.Secure Pod Traffic Using Calico Security Policy](https://github.com/tigera-cs/Calico-Security-Observability-Troubleshooting-Training/blob/main/modules/2.Secure%20Pod%20Traffic%20Using%20Calico%20Security%20Policy/README.md)
 
-[3. Cross Node Connectivity](https://github.com/Pooriya-a/CalicoEnterprise-Networking-Training/tree/main/3.%20Cross%20Node%20Connectivity)
+[3.Secure Cluster Node Traffic Using Calico Auto HEP](https://github.com/tigera-cs/Calico-Security-Observability-Troubleshooting-Training/blob/main/modules/3.Secure%20Cluster%20Node%20Traffic%20Using%20Calico%20Auto%20HEP/README.md)
 
-[4. Kubernetes Services and CE Service Advertisement](https://github.com/Pooriya-a/CalicoEnterprise-Networking-Training/tree/main/4.%20Kubernetes%20Services%20and%20CE%20Service%20Advertisement)
+[4.Secure Workload Egress Access Using Calico DNS Policy](https://github.com/tigera-cs/Calico-Security-Observability-Troubleshooting-Training/blob/main/modules/4.Secure%20Workload%20Egress%20Access%20Using%20Calico%20DNS%20Policy/README.md)
 
-[5. Calico Enterprise Egress Gateway](https://github.com/Pooriya-a/CalicoEnterprise-Networking-Training/tree/main/5.%20Calico%20Enterprise%20Egress%20Gateway)
+[5.Secure Kubernetes Network Using Wireguard Encryption](https://github.com/tigera-cs/Calico-Security-Observability-Troubleshooting-Training/blob/main/modules/5.Secure%20Kubernetes%20Network%20Using%20Wireguard%20Encryption/README.md)
 
-[6. Implement Calico Enterprise eBPF](https://github.com/Pooriya-a/CalicoEnterprise-Networking-Training/tree/main/6.%20Implement%20Calico%20Enterprise%20eBPF)
+[6.Use Calico Observability to troubleshoot connectivity issues](https://github.com/tigera-cs/Calico-Security-Observability-Troubleshooting-Training/blob/main/modules/6.Use%20Calico%20Observability%20to%20troubleshoot%20connectivity%20issues/README.md)
+
+[7. Configure Calico Compliance Reporting](https://github.com/tigera-cs/Calico-Security-Observability-Troubleshooting-Training/blob/main/modules/7.%20Configure%20Calico%20Compliance%20Reporting/README.md)
