@@ -3,7 +3,7 @@
 This lab provides the instructions to:
 
 * [Overview](https://github.com/tigera-cs/Calico-Security-Observability-Troubleshooting-Training/blob/main/modules/5.Secure%20Kubernetes%20Network%20Using%20Wireguard%20Encryption/README.md#overview)
-* [Enable Calico Wireguard encryption]()
+* [Enable Calico Wireguard encryption](https://github.com/tigera-cs/Calico-Security-Observability-Troubleshooting-Training/blob/main/modules/5.Secure%20Kubernetes%20Network%20Using%20Wireguard%20Encryption/README.md#enable-calico-wireguard-encryption)
 
 
 
