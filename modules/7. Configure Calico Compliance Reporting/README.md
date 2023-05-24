@@ -2,7 +2,7 @@
 
 This lab provides the instructions to:
 
-* [Overview]()
+* [Overview](https://github.com/tigera-cs/Calico-Security-Observability-Troubleshooting-Training/blob/main/modules/7.%20Configure%20Calico%20Compliance%20Reporting/README.md#overview)
 * [Enable Calico Wireguard encryption]()
 
 
