@@ -535,7 +535,7 @@ EOF
 
 
 
-### Investigate denied flows using the Calico Enterprise Observability tools
+### Investigate denied flows using the Calico Enterprise Observability tools (ServiceGraph)
 
 1. Clone the Observability Clinic Repo and grant the executable permission for the lab's script.
 
@@ -665,7 +665,7 @@ paymentservice-584567958d-5z8jx          1/1     Running   1 (38h ago)   7d    a
   <img src="Images/15.m2lab1-15.png" alt="Online Boutique - Order complete" align="center" width="800">
 </p>
 
-### LAB
+### Investigate denied flows using the Calico Enterprise Observability tools (ServiceGraph) - Do it yourself
 
 1. Run the script below again.
 
@@ -761,7 +761,7 @@ https://hipstershop.<LabName>.labs.tigera.fr
 
 So what happened here?  The traffic would have flowed through the hipstershop.app.fronted, checked the ingress rule and matched with the Log rule.  That rule would have logged the traffic (syslog) and then the matching would have continued since the traffic was not Allowed, Denied or Passed.  The next policy that scoped the traffic would have been the app.app-default-pass policy that would have passed the traffic to the default tier for it to be denied by the default-deny policy
 
-### LAB
+###  Identify denied flows using the Flow Visualizations - Do it yourself
 
 1. Run the script below again.
 
