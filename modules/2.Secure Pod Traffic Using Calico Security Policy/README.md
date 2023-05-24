@@ -8,7 +8,7 @@ This lab provides the instructions to:
 * [Configure Tiers and RBAC](https://github.com/tigera-cs/Calico-Security-Observability-Troubleshooting-Training/blob/main/modules/2.Secure%20Pod%20Traffic%20Using%20Calico%20Security%20Policy/README.md#configure-tiers-and-rbac)
 * [Secure pod traffic using Calico security policy](https://github.com/tigera-cs/Calico-Security-Observability-Troubleshooting-Training/blob/main/modules/2.Secure%20Pod%20Traffic%20Using%20Calico%20Security%20Policy/README.md#secure-pod-traffic-using-calico-security-policy)
 * [Build your policies](https://github.com/tigera-cs/Calico-Security-Observability-Troubleshooting-Training/blob/main/modules/2.Secure%20Pod%20Traffic%20Using%20Calico%20Security%20Policy/README.md#build-your-policies)
-* [Validate and enforce connectivity]()
+* [Validate and enforce connectivity](https://github.com/tigera-cs/Calico-Security-Observability-Troubleshooting-Training/blob/main/modules/2.Secure%20Pod%20Traffic%20Using%20Calico%20Security%20Policy/README.md#validate-and-enforce-connectivity)
 
 
 
