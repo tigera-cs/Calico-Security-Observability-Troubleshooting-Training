@@ -40,7 +40,7 @@ To ssh into the lab instances, type the following commands. The associated IP ad
 
 [1. Install Calico Enterprise](https://github.com/tigera-cs/Calico-Security-Observability-Troubleshooting-Training/tree/main/modules/1.%20Install%20Calico%20Enterprise)
 
-[2. Implement pod networking using Calico Enterprise CNI and IPAM](https://github.com/Pooriya-a/CalicoEnterprise-Networking-Training/tree/main/2.%20Implement%20pod%20networking%20using%20Calico%20Enterprise%20CNI%20and%20IPAM)
+[2.Secure Pod Traffic Using Calico Security Policy](https://github.com/tigera-cs/Calico-Security-Observability-Troubleshooting-Training/blob/main/modules/2.Secure%20Pod%20Traffic%20Using%20Calico%20Security%20Policy/README.md)
 
 [3. Cross Node Connectivity](https://github.com/Pooriya-a/CalicoEnterprise-Networking-Training/tree/main/3.%20Cross%20Node%20Connectivity)
 
