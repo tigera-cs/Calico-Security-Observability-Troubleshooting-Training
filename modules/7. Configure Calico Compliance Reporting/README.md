@@ -3,7 +3,7 @@
 This lab provides the instructions to:
 
 * [Overview](https://github.com/tigera-cs/Calico-Security-Observability-Troubleshooting-Training/blob/main/modules/7.%20Configure%20Calico%20Compliance%20Reporting/README.md#overview)
-* [Enable Calico Wireguard encryption]()
+* [Configure Compliance Reporting](https://github.com/tigera-cs/Calico-Security-Observability-Troubleshooting-Training/blob/main/modules/7.%20Configure%20Calico%20Compliance%20Reporting/README.md#compliance-reporting)
 
 
 
@@ -28,7 +28,7 @@ Kubernetes compliance reporting involves evaluating and documenting how well a K
 ____________________________________________________________________________________________________________________________________________________________________________________
 
 
-### Compliance Reporting
+### Configure Compliance Reporting
 
 Compliance reports provide the following high-level information:
 
