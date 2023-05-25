@@ -14,9 +14,10 @@ This lab provides the instructions to:
 
 ### Overview
 
-Network encryption is crucial for maintaining the security and privacy of data and communication within a Kubernetes cluster. It plays a significant role in ensuring that information remains confidential and protected. Network encryption provides protection against unauthorized access and eavesdropping. Additionally, it helps meet compliance regulations and safeguards against man-in-the-middle attacks. Implementing network encryption is vital for preserving the integrity and privacy of data, adhering to regulatory standards, and establishing secure Kubernetes deployments. Wireguard is a simple, lightweight, and performant tunneling protocol that enables us to establish secure connections. Calico leverages Wireguard to deliver streamlined and automated encryption for Kubernetes clusters, making the process of securing network connections easier and more efficient. In this lab, we will learn about how to use Calico Wireguard implementation to secure pod connectivity in a Kubernetes cluster. In addition to the pod traffic, Calico provides node-to-node communication encryption for managed clusters deployed on EKS (AWS CNI) and AKS (Azure CNI).
-
-
+In a more traditional network architecture, traffic flowing between tiers of an application would traverse a firewall, and at that point, could be observed and actioned.  In kubernetes, the network architecture is much flatter, and thus creates a challenge for the more traditional means of observing flows in the network.
+However the need for observability does not go away with kubernetes and remains a critical requirement for cluster-admins, devops and seurity teams to efficiently and effectively secure the kubernetes landscape.
+Any potential observability tool must understand the dynamic nature of kubernetes components and report data that is relevent and valuable to ensure the correct decisions are made when securing and debugging kubernetes clusters.
+Calico Enterprise offers 3 observability tools, Service Graph, FlowViz and kibana, that we will look at in more detail in this lab.
 
 
 #### Documentation
