@@ -1335,7 +1335,7 @@ Your ultimate policy should look like the following.
 
 <img src="img/management-ui-policy.png">
 
-11. At the top of the page, click the download icon and download the policy. Name the policy `Management-ui-policy` so that we can later use it to deploy the policy.
+11. At the top of the page, click the download icon and download the policy. Name the downloaded policy `Management-ui-policy.yaml` so that we can later use it to deploy the policy.
 
 `Note:` For the sake of time, this policy is included in the lab instructions below. Make sure your generated policy is the same as the policy included in the lab instructions below.
 
@@ -1344,7 +1344,7 @@ Your ultimate policy should look like the following.
 <img src="img/client-app-policy-recommender.png">
 
 
-13. Remove the DNS rule for the egress traffic and download the policy. Name the policy `client-policy.yaml` so that we can later use it to deploy the policy. Your policy should look like the following after you remove the DNS egress rule.
+13. Remove the DNS rule for the egress traffic and download the policy. Name the download policy `client-policy.yaml` so that we can later use it to deploy the policy. Your policy should look like the following after you remove the DNS egress rule.
 
 `Note:` For the sake of time, this policy is included in the lab instructions below. Make sure your generated policy is the same as the policy included in the lab instructions below.
 
