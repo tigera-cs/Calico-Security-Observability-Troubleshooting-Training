@@ -1227,7 +1227,7 @@ The default tier is used to implement global default deny policy.
 
 ### Build your policies
 
-There are two three ways to build security policies:
+There are three ways to build security policies:
 
   - Using `Policy recommender` empowered by Calico flow logs. 
   - Using flow logs (through Kibana, ServiceGraph, FlowVisualization) to understand the traffic connectivity requirements and build policies manually.
