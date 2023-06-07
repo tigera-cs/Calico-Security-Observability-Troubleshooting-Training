@@ -2200,7 +2200,7 @@ kubectl -n tigera-elasticsearch get secret tigera-secure-es-elastic-user -o go-t
 <img src="img/kibana-discover.png">
 
 
-4. From the left menu bar just below `Add filter`, ensure `tigera_secure_ee_flows*` index is selected and then click on the plus sign next to the following flow logs metadata to filter through the metadata. Make sure to filter as per the order listed below to have an organized and clear view of the filtered information. Change the filter time range to `last  minutes`.
+4. From the left menu bar just below `Add filter`, ensure `tigera_secure_ee_flows*` index is selected and then click on the plus sign next to the following flow logs metadata to filter through the metadata. Make sure to filter as per the order listed below to have an organized and clear view of the filtered information. Change the filter time range to `last 15 minutes`.
 
 - source_namespace
 - source_name_aggr
