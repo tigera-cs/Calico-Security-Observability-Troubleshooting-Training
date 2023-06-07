@@ -930,7 +930,7 @@ kubectl create clusterrolebinding platform-tigera-network-admin --clusterrole ti
 8. Log into the the Calico Manager UI. Your `Policies Board` page should look like the following, which has admin access to all the tiers in the cluster.
 
 ```bash
-kubectl create token platform -n default --duration=24h
+kubectl get secret $(kubectl get serviceaccount platform -o jsonpath='{range .secrets[*]}{.name}{"\n"}{end}' | grep token) -o go-template='{{.data.token | base64decode}}' && echo
 
 ```
 
