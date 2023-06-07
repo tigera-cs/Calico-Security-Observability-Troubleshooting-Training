@@ -1309,7 +1309,7 @@ node/ip-10-0-1-31.us-west-1.compute.internal labeled
 5. Log into the Calico Manager UI using platform `platform` credentials. Browse to the `Policies Board` and click on `Recommend a Policy` from top right corner of the page.
 
 ```bash
-kubectl create token platform -n default --duration=24h
+kubectl get secret $(kubectl get serviceaccount platform -o jsonpath='{range .secrets[*]}{.name}{"\n"}{end}' | grep token) -o go-template='{{.data.token | base64decode}}' && echo
 
 ```
 
@@ -1335,7 +1335,7 @@ Your ultimate policy should look like the following.
 
 <img src="img/management-ui-policy.png">
 
-11. At the top of the page, click the download icon and download the policy. Name the policy `Management-ui-policy.yaml` so that we can later use it to deploy the policy.
+11. At the top of the page, click the download icon and download the policy. Name the policy `Management-ui-policy` so that we can later use it to deploy the policy.
 
 `Note:` For the sake of time, this policy is included in the lab instructions below. Make sure your generated policy is the same as the policy included in the lab instructions below.
 
