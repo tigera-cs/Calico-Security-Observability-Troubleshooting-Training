@@ -43,13 +43,13 @@ do
   read  -p "Enter the option: " OPTION
 
   case $OPTION in
-	1|2|4|6|7|8)
+	1|2|4|5|7|8)
                 $KU replace -f $BSCRIPTS$OPTION".yaml" > /dev/null
                 echo ""
                 read -p "------------- Press any key to continue"
                 clear
                 ;; 
-	3|5)
+	3|6)
 		$KU replace -f $BSCRIPTS$OPTION".yaml" > /dev/null
                 echo ""
 		$KU rollout restart daemonset ingress-nginx-controller -n ingress-nginx > /dev/null
