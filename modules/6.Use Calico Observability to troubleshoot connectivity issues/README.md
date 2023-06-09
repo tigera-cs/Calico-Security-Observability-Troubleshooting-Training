@@ -758,6 +758,8 @@ Calico-Security-Observability-Troubleshooting-Training/tsworkshop/workshop1/lab-
 
 2. Type “3” (Demo Break Online Boutique - Flow Visualizations) and press Enter. Then type "99" and hit Enter to exit.
 
+Note: Please do wait for a few minutes for this issue to become apparent.  You may also need to open a new incognito browser or a new browser altogether to receive the error
+
 
 3. Using the following URL, browse to the Online Boutique select any product. You should receive an error: *“504 Gateway Time-out”*
 
