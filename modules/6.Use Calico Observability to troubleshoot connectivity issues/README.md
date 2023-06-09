@@ -846,13 +846,21 @@ Calico-Security-Observability-Troubleshooting-Training/tsworkshop/workshop1/lab-
 `Note:` that this can take a few minutes and you may need to open a new browser or in-private window
 
 3. Then type "99" and hit Enter to exit.
-4. Using the following URL, browse to the Online Boutique select any product. You should receive an error: *“504 Gateway Time-out”*
+4. Using the following URL, browse to the Online Boutique select any product and click Place Order
 
 ```bash
 https://hipstershop.<LabName>.labs.tigera.fr
 ```
 
-5. Open the Calico Enterprise UI and go to Kibana by clicking in the icon <img src="Images/icon-4.png" alt="Kibana" width="30">. Log into kibana using the following credentials.
+5. You should receive an internal server error will return saying “failed to get user cart during checkout”
+
+```nano
+HTTP Status: 500 Internal Server Error
+rpc error: code = Internal desc = cart failure: failed to get user cart during checkout: rpc error: code = Unavailable desc = connection error: desc = "transport: Error while dialing dial tcp 10.49.114.104:7070: i/o timeout"
+failed to complete the order
+main.(*frontendServer).placeOrderHandler
+```
+6. Open the Calico Enterprise UI and go to Kibana by clicking in the icon <img src="Images/icon-4.png" alt="Kibana" width="30">. Log into kibana using the following credentials.
 
 Username:
 
@@ -866,19 +874,19 @@ kubectl -n tigera-elasticsearch get secret tigera-secure-es-elastic-user -o go-t
 
 ```
 
-6. From Kibana, there are multiple ways to track the flow and we will use a predefined dashboard. Hence go to Home > Analytics > Dashboard.
+7. From Kibana, there are multiple ways to track the flow and we will use a predefined dashboard. Hence go to Home > Analytics > Dashboard.
 
 <p align="center">
   <img src="Images/24.m2lab5-1.png" alt="Kibana - Dashboard" align="center" width="800">
 </p>
 
-7. Click on “Tigera Secure EE Flow Logs” dashboard.
+8. Click on “Tigera Secure EE Flow Logs” dashboard.
 
 <p align="center">
   <img src="Images/25.m2lab5-2.png" alt="Kibana - Tigera EE Flow logs" align="center" width="800">
 </p>
 
-8. Add the filters *“action"* is *"deny"*, *"dest_namespace"* is *"hipstershop"*.
+9. Add the filters *“action"* is *"deny"*, *"dest_namespace"* is *"hipstershop"*.
 
 <p align="center">
   <img src="Images/26.m2lab5-3.png" alt="Kibana - Flow Logs filter" align="center" width="800">
@@ -890,19 +898,19 @@ kubectl -n tigera-elasticsearch get secret tigera-secure-es-elastic-user -o go-t
   <img src="Images/27.m2lab5-4.png" alt="Kibana - Denied Flows" align="center" width="800">
 </p>
 
-10. Expand the flow logs to `frontend` service as it is not accessible. You should see the Security Policy `"3|default|default.default-deny|deny|0"` has denied this flow.
+10. Expand the flow logs to from `checkoutservice` to `cartservice` as this is where the issue happened. You should see the Security Policy `"3|default|default.default-deny|deny|0"` has denied this flow.
 
 <p align="center">
   <img src="Images/28.m2lab5-5.png" alt="Kibana - Denied Policy" align="center" width="800">
 </p>
 
-11. When checking on the Security Policy “tenant-hipstershop”, we can see the Ingress rule set to Deny and it should be Pass as configured in the topic **[Configure the Security and DNS Policies in the cluster](https://github.com/tigera-cs/observability-clinic/blob/main/1.%20Overview/readme.md#6-configure-the-security-and-dns-policies-in-the-cluster)**.
+11. When checking on the Security Policy “cartservice”, we can see the Ingress rule set to UDP and it should be TCP.
 
 <p align="center">
   <img src="Images/29.m2lab5-6.png" alt="Security Policy - Denied Policy" align="center" width="800">
 </p>
 
-12. After changing the Ingress rule to ***Pass*** in the “tenant-hipstershop” Security Policy, the Online Boutique should be accessible again.
+12. After changing the Ingress rule to ***TCP*** in the “cartservice” Security Policy, we are now able to continue with the purcahse.
 
 
 > ## You have completed `6.Use Calico Observability to troubleshoot connectivity issues` lab.
