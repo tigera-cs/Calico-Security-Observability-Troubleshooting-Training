@@ -905,4 +905,4 @@ kubectl -n tigera-elasticsearch get secret tigera-secure-es-elastic-user -o go-t
 12. After changing the Ingress rule to ***Pass*** in the “tenant-hipstershop” Security Policy, the Online Boutique should be accessible again.
 
 
-> ## You have completed `5.Secure Kubernetes Network Using Wireguard Encryption` lab. Next lab:  [5.Secure Kubernetes Network Using Wireguard Encryption](https://github.com/tigera-cs/quickstart-self-service/blob/main/modules/analyze-networksets-external-services.md)  
+> ## You have completed `6.Use Calico Observability to troubleshoot connectivity issues` lab.
