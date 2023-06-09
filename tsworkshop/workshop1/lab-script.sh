@@ -3,8 +3,8 @@
 typeset -i OPTION
 OPTION=0
 KU="/usr/local/bin/kubectl"
-BSCRIPTS="/home/tigera/observability-clinic/tsworkshop/workshop1/.scripts/.blab"
-FSCRIPTS="/home/tigera/observability-clinic/tsworkshop/workshop1/.scripts/.flab"
+BSCRIPTS="/home/tigera/Calico-Security-Observability-Troubleshooting-Training/tsworkshop/workshop1/.scripts/.blab"
+FSCRIPTS="/home/tigera/Calico-Security-Observability-Troubleshooting-Training/tsworkshop/workshop1/.scripts/.flab"
 
 
 clear
@@ -25,8 +25,6 @@ do
   echo "# 4 - LAB Break Online Boutique - Flow Visualisation                           #"
   echo "#                                                                              #"
   echo "# 5 - Demo Break Online Boutique - Kibana                                      #"
-  echo "#                                                                              #"
-  echo "# 6 - LAB Break Online Boutique - Kibana                                       #"
   echo "################################################################################"
   echo ""
   echo " ---------------------------- Fix Scripts"
