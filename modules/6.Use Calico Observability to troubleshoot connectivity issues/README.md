@@ -533,6 +533,28 @@ spec:
           - "8080"
   types:
     - Egress
+---
+apiVersion: projectcalico.org/v3
+kind: NetworkPolicy
+metadata:
+  name: security.tenant-histershop
+  namespace: hipstershop
+spec:
+  tier: security
+  order: 75
+  selector: all()
+  serviceAccountSelector: ''
+  ingress:
+    - action: Pass
+      source: {}
+      destination: {}
+  egress:
+    - action: Pass
+      source: {}
+      destination: {}
+  types:
+    - Ingress
+    - Egress
 EOF
 
 ```
