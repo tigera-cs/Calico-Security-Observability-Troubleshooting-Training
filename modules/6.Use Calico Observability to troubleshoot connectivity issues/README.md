@@ -895,19 +895,19 @@ kubectl -n tigera-elasticsearch get secret tigera-secure-es-elastic-user -o go-t
 9. We can see the denied flows. 
 
 <p align="center">
-  <img src="Images/27.m2lab5-4.png" alt="Kibana - Denied Flows" align="center" width="800">
+  <img src="Images/26.m2lab5-4.png" alt="Kibana - Denied Flows" align="center" width="800">
 </p>
 
 10. Expand the flow logs to from `checkoutservice` to `cartservice` as this is where the issue happened. You should see the Security Policy `"3|default|default.default-deny|deny|0"` has denied this flow.
 
 <p align="center">
-  <img src="Images/28.m2lab5-5.png" alt="Kibana - Denied Policy" align="center" width="800">
+  <img src="Images/26.m2lab5-5.png" alt="Kibana - Denied Policy" align="center" width="800">
 </p>
 
 11. When checking on the Security Policy “cartservice”, we can see the Ingress rule set to UDP and it should be TCP.
 
 <p align="center">
-  <img src="Images/29.m2lab5-6.png" alt="Security Policy - Denied Policy" align="center" width="800">
+  <img src="Images/26.m2lab5-6.png" alt="Security Policy - Denied Policy" align="center" width="800">
 </p>
 
 12. After changing the Ingress rule to ***TCP*** in the “cartservice” Security Policy, we are now able to continue with the purcahse.
