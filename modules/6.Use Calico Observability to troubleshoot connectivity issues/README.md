@@ -915,5 +915,4 @@ kubectl -n tigera-elasticsearch get secret tigera-secure-es-elastic-user -o go-t
 
 12. After changing the Ingress rule to ***TCP*** in the “cartservice” Security Policy, we are now able to continue with the purcahse.
 
-
-> ## You have completed `6.Use Calico Observability to troubleshoot connectivity issues` lab.
+> ## You have completed `6.Use Calico Observability to troubleshoot connectivity issues` lab. Next lab:  [6.Use Calico Observability to troubleshoot connectivity issues](https://github.com/tigera-cs/Calico-Security-Observability-Troubleshooting-Training/blob/main/modules/6.Use%20Calico%20Observability%20to%20troubleshoot%20connectivity%20issues/README.md) 
