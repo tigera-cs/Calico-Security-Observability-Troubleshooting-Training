@@ -475,4 +475,4 @@ You should see an output similar to the following.
 
 `Note:` Before finishing this lab, ensure that the default-deny policy is enforced mode and not staged mode. Following labs require enforced default deny to to be in place.
 
-> ## You have completed `3.Secure Cluster Node Traffic Using Calico Auto HEP` lab. Next lab: [4.Secure Workload Egress Access Using Calico DNS Policy](https://github.com/tigera-cs/quickstart-self-service/blob/main/modules/analyze-networksets-external-services.md) 
+> ## You have completed `3.Secure Cluster Node Traffic Using Calico Auto HEP` lab. Next lab: [4.Secure Workload Egress Access Using Calico DNS Policy](https://github.com/tigera-cs/Calico-Security-Observability-Troubleshooting-Training/blob/main/modules/4.Secure%20Workload%20Egress%20Access%20Using%20Calico%20DNS%20Policy/README.md) 
