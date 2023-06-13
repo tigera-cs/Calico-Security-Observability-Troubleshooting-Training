@@ -114,4 +114,4 @@ Note: When filtering flow logs based on time, if you go far back in time when we
 
 <img src="img/service-graph-ubuntu.png">
 
-> ## You have completed `4.Secure Workload Egress Access Using Calico DNS Policy` lab. Next lab: [5.Secure Kubernetes Network Using Wireguard Encryption](https://github.com/tigera-cs/quickstart-self-service/blob/main/modules/analyze-networksets-external-services.md) 
+> ## You have completed `4.Secure Workload Egress Access Using Calico DNS Policy` lab. Next lab: [5.Secure Kubernetes Network Using Wireguard Encryption](https://github.com/tigera-cs/Calico-Security-Observability-Troubleshooting-Training/blob/main/modules/5.Secure%20Kubernetes%20Network%20Using%20Wireguard%20Encryption/README.md) 
