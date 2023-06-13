@@ -2448,4 +2448,4 @@ kubectl get -n yaobank secret $(kubectl get serviceaccount tenant2 -n yaobank -o
 
 At this point, we have implementented the required policies to secure application connectivity for the applications we discussed in this lab. However, we have not enforced our global default deny policy yet. The reason is that we have enabled auto host endpoint protection to secure host traffic. Before we enforce global default deny, we will need to make sure we address any connectivity requirements for the cluster nodes and host networked pods. Otherwise, we could cause major outage for the cluster.
 
-> ## You have completed `2.Secure Pod Traffic Using Calico Security Policy` lab. Next lab: [3.Secure Cluster Node Traffic Using Calico Auto HEP](https://github.com/tigera-cs/quickstart-self-service/blob/main/modules/analyze-networksets-external-services.md) 
+> ## You have completed `2.Secure Pod Traffic Using Calico Security Policy` lab. Next lab: [3.Secure Cluster Node Traffic Using Calico Auto HEP](https://github.com/tigera-cs/Calico-Security-Observability-Troubleshooting-Training/blob/main/modules/3.Secure%20Cluster%20Node%20Traffic%20Using%20Calico%20Auto%20HEP/README.md) 
