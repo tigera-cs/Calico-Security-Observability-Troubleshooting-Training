@@ -423,4 +423,4 @@ kubectl -n tigera-elasticsearch get secret tigera-secure-es-elastic-user -o go-t
 <img src="img/kibana-ui.png" height="700px" width="900px">
 
 
-> ## You have completed `1. Install Calico Enterprise` lab. Next lab: [ 2.Secure Pod Traffic Using Calico Security Policy](https://github.com/tigera-cs/quickstart-self-service/blob/main/modules/analyze-networksets-external-services.md) 
+> ## You have completed `1. Install Calico Enterprise` lab. Next lab: [ 2.Secure Pod Traffic Using Calico Security Policy](https://github.com/tigera-cs/Calico-Security-Observability-Troubleshooting-Training/blob/main/modules/2.Secure%20Pod%20Traffic%20Using%20Calico%20Security%20Policy/README.md) 
