@@ -118,22 +118,6 @@ spec:
   schedule: 0 * * * *
 EOF
 ```
-
-### Hourly Report - Inventory
-
-The following report schedules hourly inventory reports for all endpoints in the cluster. 
-
-<p align="center">
-  <img src="images/pci-inventory.png" alt="PCI Inventory Example" align="center" width="600">
-</p>
-
-```yaml
-kubectl apply -f -<<EOF
-apiVersion: projectcalico.org/v3
-kind: GlobalReport
-metadata:
-  name: hourly-inventory-report
-spec:
   reportType: inventory
   schedule: 0 * * * *
 EOF
