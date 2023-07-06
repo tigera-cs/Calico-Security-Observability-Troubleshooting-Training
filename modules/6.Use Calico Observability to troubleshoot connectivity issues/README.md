@@ -559,7 +559,7 @@ EOF
 
 ```
 
-6. Check the connectivity to hipstershop application. `https:\\hipstershop.<LabName>.labs.tigera.fr` via your browser.
+6. Check the connectivity to hipstershop application. `https://hipstershop.<LabName>.labs.tigera.fr` via your browser.
 
 
 
