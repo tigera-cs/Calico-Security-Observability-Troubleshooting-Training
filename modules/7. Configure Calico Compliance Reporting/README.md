@@ -118,6 +118,3 @@ spec:
   schedule: 0 * * * *
 EOF
 ```
-  reportType: inventory
-  schedule: 0 * * * *
-EOF
