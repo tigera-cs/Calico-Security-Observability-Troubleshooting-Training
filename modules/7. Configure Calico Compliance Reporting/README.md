@@ -121,4 +121,6 @@ EOF
   reportType: inventory
   schedule: 0 * * * *
 EOF
+before
 ```
+after
