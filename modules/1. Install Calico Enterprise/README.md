@@ -199,7 +199,7 @@ spec:
   # Install Calico Enterprise
   variant: TigeraSecureEnterprise
   # List of image pull secrets to use when installing images from a container registry.
-  # If specified, secrets must be created in the `tigera-operator` namespace.
+  # If specified, secrets must be created in the tigera-operator namespace.
   imagePullSecrets:
     - name: tigera-pull-secret
   calicoNetwork:
