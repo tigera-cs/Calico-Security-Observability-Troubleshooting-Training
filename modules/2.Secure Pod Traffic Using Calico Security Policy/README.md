@@ -533,7 +533,7 @@ NAME            CLASS    HOSTS                             ADDRESS              
 management-ui   <none>   stars.tigeralab1.labs.tigera.fr   10.0.1.30,10.0.1.31   80      38s
 ```
 
-7. Check the connectivity to the customer service `https:\\stars.<LabName>.labs.tigera.fr` via your browser.
+7. Check the connectivity to the customer service `https://stars.<LabName>.labs.tigera.fr` via your browser.
 
 <img src="img/stars-ui.png" height="700px" width="900px">
 
