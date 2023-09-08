@@ -582,7 +582,7 @@ NAME      CLASS    HOSTS                               ADDRESS               POR
 yaobank   <none>   yaobank.tigeralab1.labs.tigera.fr   10.0.1.30,10.0.1.31   80      12s
 ```
 
-Check the connectivity to the customer service `https:\\yaobank.<LabName>.labs.tigera.fr` via your browser.
+Check the connectivity to the customer service `https://yaobank.<LabName>.labs.tigera.fr` via your browser.
 
 
 <img src="img/yaobank-ui.png" height="700px" width="900px">
