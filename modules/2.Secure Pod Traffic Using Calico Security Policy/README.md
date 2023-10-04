@@ -904,8 +904,7 @@ kubectl create clusterrolebinding tigera-security-team --clusterrole=tigera-secu
 6. Log into the the Calico Manager UI and check your `Policies Board` page. You should only see the security tier as shown in the following screenshot.
 
 ```bash
-kubectl get secret $(kubectl get serviceaccount security -o jsonpath='{range .secrets[*]}{.name}{"\n"}{end}' | grep token) -o go-template='{{.data.token | base64decode}}' && echo
-
+kubectl create token security --duration=24h
 ```
 <img src="img/security-tier-policy-board.png" height="700px" width="900px">
 
@@ -930,8 +929,7 @@ kubectl create clusterrolebinding platform-tigera-network-admin --clusterrole ti
 8. Log into the the Calico Manager UI. Your `Policies Board` page should look like the following, which has admin access to all the tiers in the cluster.
 
 ```bash
-kubectl get secret $(kubectl get serviceaccount platform -o jsonpath='{range .secrets[*]}{.name}{"\n"}{end}' | grep token) -o go-template='{{.data.token | base64decode}}' && echo
-
+kubectl create token platform --duration=24h
 ```
 
 <img src="img/tiers-policy-board.png" height="600px" width="1100px">
