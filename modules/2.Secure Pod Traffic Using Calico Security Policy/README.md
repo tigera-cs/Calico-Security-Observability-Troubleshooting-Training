@@ -941,8 +941,7 @@ kubectl create token platform --duration=24h
 
 ```bash
 kubectl create sa tenant1 -n stars
-kubectl get secret -n stars $(kubectl get serviceaccount tenant1 -n stars -o jsonpath='{range .secrets[*]}{.name}{"\n"}{end}' | grep token) -o go-template='{{.data.token | base64decode}}' && echo
-
+kubectl create token tenant1 --duration=24h
 ```
 10. Log into the Calico Manager UI using `tenant1` token and check your permissions. Your login should be showing the following message because there is no permissions assigned to `tenant1` yet.
 
