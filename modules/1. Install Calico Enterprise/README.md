@@ -329,11 +329,12 @@ calicoctl version
 
 ```
 ```
-Client Version:    v3.15.0
+tigera@bastion:~$ calicoctl version
+Client Version:    v3.17.2
 Release:           Calico Enterprise
-Git commit:        ec220e492e
-Cluster Calico Version:               v3.24.5
-Cluster Calico Enterprise Version:    v3.15.0
+Git commit:        b95c95d112
+Cluster Calico Version:               v3.25.1
+Cluster Calico Enterprise Version:    v3.17.1
 Cluster Type:                         typha,kdd,k8s,operator,bgp,kubeadm
 ```
 
@@ -404,7 +405,7 @@ kubectl get secret $(kubectl get serviceaccount tigercub -o jsonpath='{range .se
 **Note:** Do not foroget to replace `<LABNAME>` with your lab instance name.
 
 ```
-https://manager.<LABNAME>.labs.tigera.fr
+https://manager.<LABNAME>.training.tigera.ca
 ```
 You shouls see a page similar to the following.
 
