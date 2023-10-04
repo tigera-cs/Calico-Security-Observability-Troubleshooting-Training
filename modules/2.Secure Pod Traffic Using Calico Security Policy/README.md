@@ -505,7 +505,7 @@ metadata:
   namespace: management-ui
 spec:
   rules:
-  - host: "stars.<LABNAME>.labs.tigera.fr"
+  - host: "stars.<LABNAME>.training.tigera.ca"
     http:
       paths:
       - path: /
@@ -530,10 +530,10 @@ You should see an output similar to the following.
 
 ```bash
 NAME            CLASS    HOSTS                             ADDRESS               PORTS   AGE
-management-ui   <none>   stars.tigeralab1.labs.tigera.fr   10.0.1.30,10.0.1.31   80      38s
+management-ui   <none>   stars.tigeralab1.training.tigera.ca   10.0.1.30,10.0.1.31   80      38s
 ```
 
-7. Check the connectivity to the customer service `https://stars.<LabName>.labs.tigera.fr` via your browser.
+7. Check the connectivity to the customer service `https://stars.<LabName>.training.tigera.ca` via your browser.
 
 <img src="img/stars-ui.png" height="700px" width="900px">
 
@@ -554,7 +554,7 @@ metadata:
   namespace: yaobank
 spec:
   rules:
-  - host: "yaobank.<LABNAME>.labs.tigera.fr"
+  - host: "yaobank.<LABNAME>.training.tigera.ca"
     http:
       paths:
       - path: /
@@ -579,10 +579,10 @@ You should see an output similar to the following.
 
 ```bash
 NAME      CLASS    HOSTS                               ADDRESS               PORTS   AGE
-yaobank   <none>   yaobank.tigeralab1.labs.tigera.fr   10.0.1.30,10.0.1.31   80      12s
+yaobank   <none>   yaobank.tigeralab1.training.tigera.ca   10.0.1.30,10.0.1.31   80      12s
 ```
 
-Check the connectivity to the customer service `https://yaobank.<LabName>.labs.tigera.fr` via your browser.
+Check the connectivity to the customer service `https://yaobank.<LabName>.training.tigera.ca` via your browser.
 
 
 <img src="img/yaobank-ui.png" height="700px" width="900px">
@@ -1111,7 +1111,7 @@ kubectl create clusterrolebinding tenant1-tigera-globalalert-view --clusterrole=
 
 ```
 
-16. `tigera-networkset-view` provides read access to pods in `stars`, `management-ui`, `client` namespaces. At this point ServiceGraph should not provide any visibility into these namespaces traffic. However, after running the following commands you shoud see the relevant flow information in ServiceGraph. Before running the following commands, make sure to use use your browser and try to connect to `https://stars.<LABNAME>.labs.tigera.fr`. Wait for a minute or two and make sure you do not see any flow information in ServiceGraph. Then run the following comamnds and check ServiceGraph again to see the flows.
+16. `tigera-networkset-view` provides read access to pods in `stars`, `management-ui`, `client` namespaces. At this point ServiceGraph should not provide any visibility into these namespaces traffic. However, after running the following commands you shoud see the relevant flow information in ServiceGraph. Before running the following commands, make sure to use use your browser and try to connect to `https://stars.<LABNAME>.training.tigera.ca`. Wait for a minute or two and make sure you do not see any flow information in ServiceGraph. Then run the following comamnds and check ServiceGraph again to see the flows.
 
 ```bash
 kubectl create rolebinding tenant1-tigera-networkset-view --clusterrole=tigera-networkset-view --namespace=stars --serviceaccount=stars:tenant1
@@ -1303,7 +1303,7 @@ node/ip-10-0-1-30.us-west-1.compute.internal labeled
 node/ip-10-0-1-31.us-west-1.compute.internal labeled
 ```
 
-4. Use your Internet browser and browse to `https://stars.<LABNAME>.labs.tigera.fr` and `https://yaobank.<LABNAME>.labs.tigera.fr` to connect to the Stars and Yaobank app and generate flow logs. Make sure you can see the following page.
+4. Use your Internet browser and browse to `https://stars.<LABNAME>.training.tigera.ca` and `https://yaobank.<LABNAME>.training.tigera.ca` to connect to the Stars and Yaobank app and generate flow logs. Make sure you can see the following page.
 
 
 5. Log into the Calico Manager UI using platform `platform` credentials. Browse to the `Policies Board` and click on `Recommend a Policy` from top right corner of the page.
@@ -2218,7 +2218,7 @@ kubectl -n tigera-elasticsearch get secret tigera-secure-es-elastic-user -o go-t
 <img src="img/discover-filter-page.png">
 
 
-6. Use the following filter for the traffic matching our temporary `Pass` fail-safe rules based on the `tier name`, `policy name`, `rule action`, and `rule index number`. Before running the following search, make sure to browse to `https://stars.<LABNAME>.labs.tigera.fr` to generate some flow logs.
+6. Use the following filter for the traffic matching our temporary `Pass` fail-safe rules based on the `tier name`, `policy name`, `rule action`, and `rule index number`. Before running the following search, make sure to browse to `https://stars.<LABNAME>.training.tigera.ca` to generate some flow logs.
 
 7. Type the following in the search bar of `Discover` page. This will look for any traffic matching our ingress fail-safe rule.
 
@@ -2243,7 +2243,7 @@ policies:{ all_policies: *security|security.tenant-1-restrict|pass|4* }
 <img src="img/discover-egress-traffic-match.png">
 
 
-10. Similary, if you click on the `tenant-1-restrict` policy while you are also trying to browse to `https://stars.<LABNAME>.labs.tigera.fr` , you will see traffic hitting the egress `Pass: Any Protocol` rule. If we had our previous egress rules before this pass rule correctly configured, no traffic would have hit this rule.
+10. Similary, if you click on the `tenant-1-restrict` policy while you are also trying to browse to `https://stars.<LABNAME>.training.tigera.ca` , you will see traffic hitting the egress `Pass: Any Protocol` rule. If we had our previous egress rules before this pass rule correctly configured, no traffic would have hit this rule.
 
 <img src="img/tenant1-restrict-policy-pass-rule-hit.png">
 
@@ -2323,7 +2323,7 @@ EOF
 
 ```
 
-12. Browse to `https://stars.<LABNAME>.labs.tigera.fr` to generate some flow logs again.
+12. Browse to `https://stars.<LABNAME>.training.tigera.ca` to generate some flow logs again.
 Change the filter time range to `last 5 minutes` in the `Discover` page.
 
 13. Type the following in the search bar of `Discover` page. Make sure to run the following query within 5 minutes from the time you generated the flow logs.
@@ -2405,7 +2405,7 @@ EOF
 
 ```
 
-15. Browse to `https://stars.<LABNAME>.labs.tigera.fr` to generate some flow logs again.
+15. Browse to `https://stars.<LABNAME>.training.tigera.ca` to generate some flow logs again.
 
 16. Navigate to `Servicegraph` from Calico Manager UI.
 
