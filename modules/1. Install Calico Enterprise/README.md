@@ -375,7 +375,7 @@ EOF
 2. Check your access to the yaobank application and CE Manager UI using the following URLs. Make sure to replace `<LABNAME>` with the name of your lab instance.
 
 ```bash
-https://manager.<LABNAME>.labs.tigera.fr
+https://manager.<LABNAME>.training.tigera.ca
 ```
 
 3. Calico Enterprise Manager UI by default supports token-based auth. Let's create a serviceaccount so that we can use the associated token to log into the Manager UI. 
