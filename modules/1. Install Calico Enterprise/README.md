@@ -358,7 +358,7 @@ metadata:
     kubernetes.io/ingress.class: "nginx"
 spec:
   rules:
-  - host: "manager.<LABNAME>.labs.tigera.fr"
+  - host: "manager.<LABNAME>.training.tigera.ca"
     http:
       paths:
       - path: /
