@@ -303,7 +303,7 @@ spec:
       destination:
         nets:
           - 127.0.0.0/8
-### Ingress connections from control plane nodes to all cluster nodes on kubelet port 10250. Required for `kubectl logs`
+### Ingress connections from control plane nodes to all cluster nodes on kubelet port 10250. Required for kubectl logs
     - action: Allow
       protocol: TCP
       source:
