@@ -1304,8 +1304,9 @@ node/ip-10-0-1-31.us-west-1.compute.internal labeled
 
 5. Log into the Calico Manager UI using platform `platform` credentials. Browse to the `Policies Board` and click on `Recommend a Policy` from top right corner of the page.
 
+Regenerate if you cannot find it
 ```bash
-kubectl get secret $(kubectl get serviceaccount platform -o jsonpath='{range .secrets[*]}{.name}{"\n"}{end}' | grep token) -o go-template='{{.data.token | base64decode}}' && echo
+kubectl create token platform --duration=24h
 
 ```
 
