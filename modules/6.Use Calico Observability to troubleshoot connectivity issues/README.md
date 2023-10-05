@@ -104,7 +104,7 @@ metadata:
   namespace: hipstershop
 spec:
   rules:
-  - host: "hipstershop.<LABNAME>.labs.tigera.fr"
+  - host: "hipstershop.<LABNAME>.training.tigera.ca"
     http:
       paths:
       - path: /
