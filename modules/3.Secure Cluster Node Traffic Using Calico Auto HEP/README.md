@@ -356,6 +356,7 @@ spec:
           - '*.ubuntu.com'
           - '*.docker.io'
           - '*.docker.com'
+          - quay.io
 ### Egress connections required by ingress nginx.
     - action: Allow
       protocol: TCP
