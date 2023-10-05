@@ -2418,25 +2418,25 @@ EOF
 18. Log into the Calico Manager UI using each one of the following accounts and cross-check RBAC permissions with the permissions each one of these accounts should have. 
 
 ```bash
-kubectl get secret $(kubectl get serviceaccount security -o jsonpath='{range .secrets[*]}{.name}{"\n"}{end}' | grep token) -o go-template='{{.data.token | base64decode}}' && echo
+kubectl create token security --duration=24h
 
 ```
 
 ```bash
-kubectl get secret $(kubectl get serviceaccount platform -o jsonpath='{range .secrets[*]}{.name}{"\n"}{end}' | grep token) -o go-template='{{.data.token | base64decode}}' && echo
+kubectl create token platform --duration=24h
 
 ```
 
 19. As `tenant1` developer, try to use the Policy Board to create a policy in any namespace other than `management-ui`, `stars`, and `client`. You should not be able to since your permissions to create network policy is only limited to `management-ui`, `stars`, and `client` namespaces.
 
 ```bash
-kubectl get -n stars secret $(kubectl get serviceaccount tenant1 -n stars -o jsonpath='{range .secrets[*]}{.name}{"\n"}{end}' | grep token) -o go-template='{{.data.token | base64decode}}' && echo
+kubectl create token tenant1 -n stars --duration=24h
 
 ```
 20. Try the same as the previous step for `tenant2`.
 
 ```bash
-kubectl get -n yaobank secret $(kubectl get serviceaccount tenant2 -n yaobank -o jsonpath='{range .secrets[*]}{.name}{"\n"}{end}' | grep token) -o go-template='{{.data.token | base64decode}}' && echo
+kubectl create token tenant2 -n yaobank --duration=24h
 
 ```
 
