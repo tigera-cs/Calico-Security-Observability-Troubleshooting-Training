@@ -1164,8 +1164,7 @@ kubectl create rolebinding tenant2-tigera-networkpolicy-modify-app_tier --cluste
 
 ```bash
 
-kubectl get -n yaobank secret $(kubectl get serviceaccount -n yaobank tenant2 -o jsonpath='{range .secrets[*]}{.name}{"\n"}{end}' | grep token) -o go-template='{{.data.token | base64decode}}' && echo
-
+kubectl create token tenant2 -n yaobank --duration=24h
 ```
 
 ### Secure pod traffic using Calico security policy
