@@ -422,7 +422,7 @@ policies:{all_policies: *staged\:default-deny*} and action: "allow"
 <img src="img/hep-servicegraph.png"> \
 
 
-13. Calico implements fail-safe rules (ports) to ensure critical cluster services continue to function and you will not lock yourself outside the cluster. In this lab, we left these rules intact. If you need to remove failsafe rules, you could do so using felixconfigurations. However, before doing so you will need to be sure that all the required ports are implemented using globalnetworkpolicy. Fail-safe rules are eforced by felix and are the same across the cluster nodes. To see the fail-safe ports, ssh into one of the cluster nodes and run the following command. For further information about failsafe ports, see `failsafeInboundHostPorts` and `failsafeOutboundHostPorts` in the following link.
+13. Calico implements fail-safe rules (ports) to ensure critical cluster services continue to function and you will not lock yourself outside the cluster. In this lab, we left these rules intact. If you need to remove failsafe rules, you could do so using felixconfigurations. However, before doing so you will need to be sure that all the required ports are implemented using globalnetworkpolicy. Fail-safe rules are enforced by felix and are the same across the cluster nodes. To see the fail-safe ports, ssh into one of the cluster nodes and run the following command. For further information about failsafe ports, see `failsafeInboundHostPorts` and `failsafeOutboundHostPorts` in the following link.
 
 https://docs.tigera.io/calico-enterprise/latest/reference/resources/felixconfig
 
