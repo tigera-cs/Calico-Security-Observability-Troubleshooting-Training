@@ -405,7 +405,7 @@ policies:{all_policies: *staged\:default-deny*} and action: "allow"
 
 <img src="img/aws-undesired-traffic.png">
 
-10. Generate some flow logs by browsing to `https://stars.<LABNAME>.labs.tigera.fr` and `https://yaobank.<LABNAME>.labs.tigera.fr`. 
+10. Generate some flow logs by browsing to `https://stars.<LABNAME>.training.tigera.ca` and `https://yaobank.<LABNAME>.training.tigera.ca`. 
 
 11. Now enable flow log reporting for host endpoint connections by running the following command. Note that by default flow log reporting is not enabled in the felixconfigurations.
 
