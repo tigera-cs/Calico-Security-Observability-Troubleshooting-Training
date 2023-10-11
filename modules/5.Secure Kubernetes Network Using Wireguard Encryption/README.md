@@ -216,7 +216,7 @@ pod-1   1/1     Running   0          2m53s   10.48.0.209   ip-10-0-1-30.eu-west-
 pod-2   1/1     Running   0          2m53s   10.48.0.60    ip-10-0-1-31.eu-west-1.compute.internal   <none>           <none>
 ```
 
-9. Open two new tabs in the browser (http://<LABNAME>.training.tigera.ca) and use the bastion host to SSH into worker1 and worker2 nodes. Run the following commands on both worker1 and worker2 to see the flow of traffic on wiregaurd tunnel interface. Make sure to replace `<ip address of pod-2>` with the IP address of `pod-2` in the following command.
+9. Open two new tabs in the browser (http://\<LABNAME\>.training.tigera.ca) and use the bastion host to SSH into worker1 and worker2 nodes. Run the following commands on both worker1 and worker2 to see the flow of traffic on wiregaurd tunnel interface. Make sure to replace `<ip address of pod-2>` with the IP address of `pod-2` in the following command.
 
 ```bash
 sudo tcpdump -i wireguard.cali host <ip address of pod-2>
