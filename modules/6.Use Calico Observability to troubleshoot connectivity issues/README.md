@@ -151,7 +151,7 @@ metadata:
     kube-api: 'true'
 spec:
   allowedEgressDomains:
-    - '*.labs.tigera.fr'
+    - '*.training.tigera.ca'
 ---
 apiVersion: projectcalico.org/v3
 kind: GlobalNetworkSet
