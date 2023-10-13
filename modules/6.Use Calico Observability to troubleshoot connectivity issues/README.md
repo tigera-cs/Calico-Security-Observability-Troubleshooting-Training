@@ -589,7 +589,7 @@ Calico-Security-Observability-Troubleshooting-Training/tsworkshop/workshop1/lab-
 4. Using the following URL, browse to the Online Boutique select any product.
 
 ```bash
-https://hipstershop.<LabName>.labs.tigera.fr
+https://hipstershop.<LabName>.training.tigera.ca
 ```
 
 <p align="center">
@@ -708,7 +708,7 @@ Calico-Security-Observability-Troubleshooting-Training/tsworkshop/workshop1/lab-
 3. Using the following URL, browse to the Online Boutique select any product.
 
 ```bash
-https://hipstershop.<LabName>.labs.tigera.fr
+https://hipstershop.<LabName>.training.tigera.ca
 ```
 
 4. Change the `Currency: EUR` and select any product.
@@ -765,7 +765,7 @@ You may also need to refresh the Tigera Manager UI
 3. Using the following URL, browse to the Online Boutique select any product. You should receive an error: *“504 Gateway Time-out”*
 
 ```bash
-https://hipstershop.<LabName>.labs.tigera.fr
+https://hipstershop.<LabName>.training.tigera.ca
 ```
 
 3. On the Manager UI, browse to Flow Visualizations so that we can select the Denied flows in the Status field.
@@ -807,7 +807,7 @@ Calico-Security-Observability-Troubleshooting-Training/tsworkshop/workshop1/lab-
 3. Using the following URL, browse to the Online Boutique select any product. You should receive an error: *“504 Gateway Time-out”*
 
 ```bash
-https://hipstershop.<LabName>.labs.tigera.fr
+https://hipstershop.<LabName>.training.tigera.ca
 ```
 
 4. Select any product(s), add to the Cart and click on “Place Order”.
@@ -852,7 +852,7 @@ Calico-Security-Observability-Troubleshooting-Training/tsworkshop/workshop1/lab-
 4. Using the following URL, browse to the Online Boutique select any product and click Place Order
 
 ```bash
-https://hipstershop.<LabName>.labs.tigera.fr
+https://hipstershop.<LabName>.training.tigera.ca
 ```
 
 5. You should receive an internal server error will return saying “failed to get user cart during checkout”
