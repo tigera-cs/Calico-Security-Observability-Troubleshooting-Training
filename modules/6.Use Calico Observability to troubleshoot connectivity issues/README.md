@@ -172,7 +172,7 @@ EOF
 The globalnetworksets applied:
 * loopback: to account for the communication with loopback interface once we enable host endpoint protection (typical behavior of some linux kernel and a common trap to avoid)
 * bastion: to account for communication with bastion host, namely ssh and kube api tcp 6443 port
-* kube-api (*.lynx.tigera.ca): to account for kube-api fqdn, wildcard used for simplicity
+* kube-api (*.training.tigera.ca): to account for kube-api fqdn, wildcard used for simplicity
 * trusted-repos: to be able to pull the images for our pods
 
 
