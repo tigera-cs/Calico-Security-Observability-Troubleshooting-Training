@@ -277,7 +277,7 @@ manager                                         True
 monitor               True        False         False      7m53s
 ```
 
-17. Apply the LicenseKey to unblock enterprise features of Calico Enterprise.
+17. Once the apiserver and calico resources are True, apply the LicenseKey to unblock enterprise features of Calico Enterprise.
 
 ```bash
 kubectl create -f /home/tigera/license.yaml
