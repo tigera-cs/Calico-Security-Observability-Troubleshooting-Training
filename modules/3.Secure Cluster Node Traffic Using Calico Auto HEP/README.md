@@ -110,7 +110,7 @@ spec:
 4. Run the following command and see how the above profile is referenced in the host endpoint for the control plane node. This profile is ,by default, attached to all the heps.
 
 ```bash
-kubectl get hep $(kubectl get nodes | egrep ip-10-0-1-20 | awk '{ print $1 }' | sed 's/$/-auto-hep/') -oyaml
+kubectl get hep $(kubectl get nodes | egrep ip-10-0-1-20 | awk '{ print $1 }' | sed 's/$/-auto-hep/') -o yaml
 
 ```
 
